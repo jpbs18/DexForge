@@ -6,7 +6,7 @@ import Image from "next/image";
 export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
   return (
     <li className="bg-white rounded-lg shadow-md p-10 flex flex-col items-center mx-auto transition-transform duration-500 ease-in-out 
-        hover:scale-105 border-2 border-indigo-100 hover:border-indigo-500 transition-colors hover:shadow-xl cursor-pointer">
+        hover:scale-105 border-4 border-indigo-100 hover:border-indigo-500 dark:hover:border-pink-500 transition-colors hover:shadow-xl cursor-pointer">
       <div className="w-40 h-40 relative mb-4 z-10">
         {pokemon.sprites.other?.["official-artwork"]?.front_default ? (
           <Image
@@ -23,7 +23,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
           </div>
         )}
       </div>
-      <div className="flex flex-col items-center -translate-x-2">
+      <div className="flex flex-col items-center">
         <h2 className="text-2xl font-bold capitalize text-gray-900 mb-1">
           {pokemon.name.length >= 12 ? pokemon.name.split("-")[0] : pokemon.name}
         </h2>

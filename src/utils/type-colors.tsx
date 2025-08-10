@@ -18,3 +18,24 @@ export const typeColors: Record<string, string> = {
   steel: "bg-gray-400 text-black",
   fairy: "bg-pink-300 text-black",
 };
+
+export const pokemonTypes = [
+  "Normal",
+  "Fire",
+  "Water",
+  "Electric",
+  "Grass",
+  "Ice",
+  "Fighting",
+  "Poison",
+  "Ground",
+  "Flying",
+  "Psychic",
+  "Bug",
+  "Rock",
+  "Ghost",
+  "Dragon",
+  "Dark",
+  "Steel",
+  "Fairy",
+];

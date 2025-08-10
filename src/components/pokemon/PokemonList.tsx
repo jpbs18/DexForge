@@ -54,7 +54,7 @@ export default function PokemonList({ initialData }: { initialData: Pokemon[] })
         <button
           onClick={loadMore}
           disabled={loading || !hasMore}
-          className={`bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded mt-2 cursor-pointer
+          className={`bg-indigo-500 hover:bg-indigo-600 dark:bg-pink-600 dark:hover:bg-pink-500 text-white px-4 py-2 rounded mt-2 cursor-pointer
             ${loading || !hasMore ? "opacity-50 cursor-not-allowed hover:bg-indigo-500" : ""}`}
           >
           {loading ? "Loading..." : hasMore ? "Load More" : "No more Pokémon"}
