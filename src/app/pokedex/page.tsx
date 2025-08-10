@@ -22,12 +22,12 @@ export default async function PokedexPage() {
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-500 to-pink-500 text-transparent bg-clip-text p-2">
         Complete Pokédex
       </h1>
-      <section className="bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-800 dark:to-slate-900 rounded-2xl p-4 mb-8 shadow-lg text-center flex flex-col gap-2">
-        <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-          This is a full list of every Pokémon from all <span className="font-semibold text-indigo-600 dark:text-indigo-400">9 generations</span> of the Pokémon series.
+      <section className="bg-gradient-to-br from-slate-200 to-slate-300 rounded-2xl p-4 mb-8 shadow-lg text-center flex flex-col gap-2">
+        <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+          This is a full list of every Pokémon from all <span className="font-semibold text-indigo-600 ">9 generations</span> of the Pokémon series.
         </p>
-        <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-          You can search for a Pokémon by <span className="font-semibold text-pink-600 dark:text-pink-400">name</span> or <span className="font-semibold text-green-600 dark:text-green-400">type</span>.
+        <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+          You can search for a Pokémon by <span className="font-semibold text-pink-600">name</span> or <span className="font-semibold text-green-600">type</span>.
         </p>
       </section>
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
@@ -35,10 +35,10 @@ export default async function PokedexPage() {
         <input
           type="text"
           placeholder="Search Pokémon by name..."
-          className="w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 pl-10 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-pink-500 shadow-sm"
+          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 pl-10 text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-500 shadow-sm"
         />
         <svg
-          className="absolute left-3 top-2.5 w-5 h-5 text-gray-500 dark:text-gray-400"
+          className="absolute left-3 top-2.5 w-5 h-5 text-gray-500"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -52,7 +52,7 @@ export default async function PokedexPage() {
         </svg>
       </div>
       <select
-        className="w-full md:w-1/4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
+        className="w-full md:w-1/4 rounded-lg border border-slate-300 bg-white px-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
       >
         <option value="">Filter by Type</option>
         <option value="normal">Normal</option>
