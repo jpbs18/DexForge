@@ -13,7 +13,7 @@ export default function Home() {
           />
         </div>
         <div className="md:text-left max-w-md">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-indigo-500 to-pink-500 text-transparent bg-clip-text pb-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4" style={{ color: "#FFDE00", WebkitTextStroke: "1.5px #3B4CCA" }}>
              Welcome to DexForge!
           </h1>
           <p className="text-lg md:text-xl">

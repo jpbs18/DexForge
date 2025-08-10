@@ -13,7 +13,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="top-0 bg-opacity-100 z-50 bg-[#dee7ee] dark:bg-[#2d323d]">
+    <header className="top-0 bg-opacity-100 z-50 bg-[#be0000] ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <div style={{width: "220px", height: "120px" }}>
@@ -30,13 +30,12 @@ export default function Header() {
             </Link>
           </div>
           <nav className="hidden md:flex gap-6">
-            {navLinks.map(({ label, path, icon }) => (
+            {navLinks.map(({ label, path }) => (
               <Link
                 key={path}
                 href={path}
-                className={`${getLinkClasses(path, pathName)} flex items-center gap-2`}
+                className={`${getLinkClasses(path, pathName)} flex items-center gap-2 `}
               >
-                {icon}
                 {label}
               </Link>
             ))}
@@ -65,46 +64,44 @@ export default function Header() {
         </div>
       </div>
      <AnimatePresence>
-  {menuOpen && (
-    <motion.nav
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: "auto", opacity: 1 }}
-      exit={{ height: 0, opacity: 0 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="md:hidden overflow-hidden shadow-lg rounded-b-2xl z-50 bg-slate-500"   
-    >
-      <motion.div
-        className="max-w-7xl mx-auto px-4 py-6 space-y-4"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.05 } },
-        }}
-      >
-        {navLinks.map(({ label, path, icon }) => (
-          <motion.div
-            key={path}
-            variants={{
-              hidden: { opacity: 0, y: -10 },
-              visible: { opacity: 1, y: 0 },
-            }}
+      {menuOpen && (
+        <motion.nav
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className="md:hidden overflow-hidden shadow-lg rounded-b-2xl z-50 bg-slate-500"   
           >
-            <Link
-              href={path}
-              onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 px-4 py-2 rounded-md bg-white/20 hover:bg-white/30 text-white font-semibold transition-colors"
+            <motion.div
+              className="max-w-7xl mx-auto px-4 py-6 space-y-4"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.05 } },
+              }}
             >
-              {icon}
-              {label}
-            </Link>
-          </motion.div>
-        ))}
-      </motion.div>
-    </motion.nav>
-  )}
-</AnimatePresence>
-
+              {navLinks.map(({ label, path }) => (
+                <motion.div
+                  key={path}
+                  variants={{
+                    hidden: { opacity: 0, y: -10 },
+                    visible: { opacity: 1, y: 0 },
+                }}
+                >
+                  <Link
+                    href={path}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-2 rounded-md bg-white/20 hover:bg-white/30 text-white font-semibold transition-colors"
+                  >
+                    {label}
+                  </Link>
+                </motion.div>
+             ))}
+            </motion.div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

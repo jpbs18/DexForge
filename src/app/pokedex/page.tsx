@@ -20,10 +20,7 @@ export default async function PokedexPage() {
 
   return (
     <main className="max-w-8xl mx-auto p-4">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-indigo-500 to-pink-500 text-transparent bg-clip-text p-2">
-        Complete Pokédex
-      </h1>
-      <section className="rounded-2xl p-4 mb-8 shadow-lg text-center flex flex-col gap-2 bg-[#2d323d] dark:bg-[#dee7ee]"> 
+      <section className="max-w-3xl mx-auto rounded-2xl p-4 mb-8 shadow-lg text-center flex flex-col gap-2 bg-[#2d323d] dark:bg-[#dee7ee]"> 
         <p className="text-lg md:text-xl text-gray-200 dark:text-gray-700 leading-relaxed">
           This is a full list of every Pokémon from all 9 generations of the Pokémon series.
         </p>
