@@ -15,7 +15,7 @@ export default async function Header() {
       />
       <div className="absolute -top-2 left-0 w-[200px] h-[200px] z-5">
         <Image
-          src="/blastoise.png" 
+          src="/blastoise.webp" 
           alt="Blastoise Peek"
           fill
           sizes="200px"

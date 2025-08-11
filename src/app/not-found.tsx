@@ -10,7 +10,7 @@ export default function NotFound() {
     <main className="flex flex-col items-center justify-center flex-grow">
       <div className="mb-4 mx-8 relative w-[240px] h-[185px] md:w-[360px] md:h-[277px] lg:w-[480px] lg:h-[370px]">
         <Image 
-          src="/lapras.png" 
+          src="/lapras.webp" 
           alt="Lapras" 
           priority 
           fill 

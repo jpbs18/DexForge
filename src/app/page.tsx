@@ -10,7 +10,7 @@ export default async function Home() {
       <div className="max-w-8xl flex flex-col lg:flex-row items-center gap-6 px-6">
         <div className="relative w-[240px] h-[280px] md:w-[340px] md:h-[340px] lg:w-[480px] lg:h-[400px]">
           <Image
-            src="/articuno.png"
+            src="/articuno.webp"
             alt="Articuno"
             priority
             fill
