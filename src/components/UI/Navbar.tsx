@@ -32,6 +32,7 @@ export default function Navbar() {
 
         <div className="flex justify-end items-center h-14 md:hidden">
           <button
+            aria-label="Open menu"
             onClick={() => setMenuOpen(!menuOpen)}
             className="p-2 rounded-md hover:bg-gray-800"
           >

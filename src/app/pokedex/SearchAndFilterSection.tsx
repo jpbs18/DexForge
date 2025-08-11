@@ -5,6 +5,7 @@ export default async function SearchAndFilterSection(){
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-8">
             <div className="relative w-full md:w-1/2">
                 <input
+                  aria-label="Search Pokémon by name"
                   type="text"
                   placeholder="Search Pokémon by name..."
                   className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2 pl-10 text-gray-800 focus:outline-none focus:ring-4 focus:ring-pink-500 shadow-sm"
@@ -23,7 +24,7 @@ export default async function SearchAndFilterSection(){
                   />
                 </svg>
               </div>
-              <select className="w-full md:w-1/4 rounded-lg border border-slate-300 bg-white px-4 py-2 text-gray-800 focus:outline-none focus:ring-4 focus:ring-green-500 shadow-sm">
+              <select aria-label="Search Pokémon by type" className="w-full md:w-1/4 rounded-lg border border-slate-300 bg-white px-4 py-2 text-gray-800 focus:outline-none focus:ring-4 focus:ring-green-500 shadow-sm">
                 <option value="">Filter by Type</option>
                   {pokemonTypes.map((type) => (
                     <option key={type} value={type.toLowerCase()}>
