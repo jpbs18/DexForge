@@ -1,5 +1,9 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "Official DexForge Website | DexForge.com",
+};
+
 export default async function Home() {
   return (
     <main className="flex flex-col items-center justify-center flex-grow">

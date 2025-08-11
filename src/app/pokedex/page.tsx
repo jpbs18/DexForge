@@ -2,7 +2,6 @@ import PokemonList from "@/components/pokemon/PokemonList";
 import { PokeData, Pokemon } from "@/models/pokemon";
 import { pokemonTypes } from "@/utils/type-colors";
 
-
 export const metadata = {
   title: "Pokédex | DexForge.com",
 };
