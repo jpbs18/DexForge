@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 export default async function PokedexPage() {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1025`, { next: { revalidate: 86400 }});
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=500`, { next: { revalidate: 86400 }});
   const data = await res.json();
 
   const pokemons: Pokemon[] = await Promise.all(
