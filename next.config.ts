@@ -8,7 +8,13 @@ const nextConfig: NextConfig = {
         hostname: 'raw.githubusercontent.com',
         port: '',
         pathname: '/PokeAPI/sprites/master/sprites/pokemon/**',
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.pokemondb.net',
+        port: '',
+        pathname: '/**',
+      },
     ]
   }
 };
