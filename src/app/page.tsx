@@ -19,13 +19,10 @@ export default async function Home() {
           />
         </div>
         <div className="md:text-left max-w-md">
-          <h1
-            className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4"
-            style={{ color: "#FFDE00", WebkitTextStroke: "1.3px #3B4CCA" }}
-          >
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 text-blue-400 dark:text-yellow-300">
             Welcome to DexForge!
           </h1>
-          <p className="text-lg md:text-xl text-gray-800">
+          <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200">
             Discover, build, and battle with your perfect Pokémon team!
           </p>
         </div>
