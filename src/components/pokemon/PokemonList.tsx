@@ -21,7 +21,7 @@ export default function PokemonList({ initialData }: { initialData: Pokemon[] })
         {initialData.slice(0, visibleCount).map((pokemon: Pokemon) => <PokemonCard key={pokemon.id} pokemon={pokemon} />)}
       </ul>
       {visibleCount < initialData.length && (
-        <button onClick={handleLoadMore} disabled={loading} className="bg-[#be0000] hover:bg-[#f80101] text-white px-4 py-2 mt-2 rounded-md block mx-auto transition-colors">
+        <button onClick={handleLoadMore} disabled={loading} className="bg-[#be0000] hover:bg-[#f80101] text-white px-4 py-2 mt-8 rounded-md block mx-auto transition-colors">
           {loading ? "Loading..." : "Load More"}
         </button>
       )}
