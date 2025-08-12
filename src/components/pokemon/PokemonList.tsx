@@ -3,15 +3,16 @@
 import { useState } from "react";
 import { PokemonCard } from "./PokemonCard";
 import { Pokemon } from "@/models/pokemon";
+import { LIMIT_PER_PAGE } from "@/lib/env.client";
 
 export default function PokemonList({ initialData }: { initialData: Pokemon[] }) {
-  const [visibleCount, setVisibleCount] = useState(12);
+  const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
   const [loading, setLoading] = useState(false);
 
 
   const handleLoadMore = () => {
     setLoading(true);
-    setVisibleCount((prev) => Math.min(prev + 12, initialData.length));
+    setVisibleCount((prev) => Math.min(prev + LIMIT_PER_PAGE, initialData.length));
     setLoading(false);
   };
   
