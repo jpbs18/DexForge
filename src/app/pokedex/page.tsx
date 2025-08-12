@@ -2,10 +2,7 @@ import PokemonList from "@/components/pokemon/PokemonList";
 import PokedexHeaderSection from "./PokedexHeaderSection";
 import SearchAndFilterSection from "./SearchAndFilterSection";
 import { Pokemon } from "@/models/pokemon";
-
-const API_BASE = process.env.NODE_ENV === "production"
-  ? process.env.API_URL
-  : process.env.API_URL_DEV;
+import { GetBaseUrl } from "@/utils/environment";
 
 export const revalidate = 86400;
 export const metadata = {
@@ -16,9 +13,10 @@ async function fetchAllPokemons(): Promise<Pokemon[]>{
   const totalPokemons = 1025;
   const limit = 200;
   const totalPages = Math.ceil(totalPokemons / limit);
+  const BASE_URL = GetBaseUrl();
 
   const fetchPromises = Array.from({ length: totalPages }, (_, i) =>
-    fetch(`${API_BASE}/pokemons?page=${i + 1}&limit=${200}`, 
+    fetch(`${BASE_URL}/pokemons?page=${i + 1}&limit=${200}`, 
       { next: { revalidate: 86400 }})
       .then(r => r.json())
   );
