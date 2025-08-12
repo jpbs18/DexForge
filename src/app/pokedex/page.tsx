@@ -1,22 +1,34 @@
 import PokemonList from "@/components/pokemon/PokemonList";
-import { PokeData, Pokemon } from "@/models/pokemon";
 import PokedexHeaderSection from "./PokedexHeaderSection";
 import SearchAndFilterSection from "./SearchAndFilterSection";
+import { Pokemon } from "@/models/pokemon";
 
+const API_BASE = process.env.NODE_ENV === "production"
+  ? process.env.API_URL
+  : process.env.API_URL_DEV;
+
+export const revalidate = 86400;
 export const metadata = {
   title: "Pokédex | DexForge.com",
 };
 
-export default async function PokedexPage() {
-  const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12`, { next: { revalidate: 86400 }});
-  const data = await res.json();
+async function fetchAllPokemons(): Promise<Pokemon[]>{
+  const totalPokemons = 1025;
+  const limit = 200;
+  const totalPages = Math.ceil(totalPokemons / limit);
 
-  const pokemons: Pokemon[] = await Promise.all(
-    data.results.map(async (data: PokeData) => {
-        const res = await fetch(data.url, { next: { revalidate: 86400 }});
-        return res.json();
-    })
-  )
+  const fetchPromises = Array.from({ length: totalPages }, (_, i) =>
+    fetch(`${API_BASE}/pokemons?page=${i + 1}&limit=${200}`, 
+      { next: { revalidate: 86400 }})
+      .then(r => r.json())
+  );
+
+  const pages = await Promise.all(fetchPromises);
+  return pages.flatMap(page => page.data);
+}
+
+export default async function PokedexPage() {
+  const pokemons = await fetchAllPokemons();
 
   return (
     <main className="max-w-8xl mx-auto p-4">
