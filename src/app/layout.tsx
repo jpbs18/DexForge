@@ -2,7 +2,7 @@ import Footer from "@/components/UI/Footer";
 import Header from "@/components/UI/Header";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import '../globals.css'
+import "../globals.css";
 import Navbar from "@/components/UI/Navbar";
 
 const geistSans = Geist({
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "DexForge",
   description: "Build your perfect Pokémon team. Explore. Battle. Learn",
   icons: {
-    icon: "/pokeball.png"
+    icon: "/pokeball.png",
   },
   openGraph: {
     title: "DexForge",
@@ -51,9 +51,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
+      >
         <Header />
-        <Navbar/>
+        <Navbar />
         <main className="flex-grow flex flex-col">{children}</main>
         <Footer />
       </body>
