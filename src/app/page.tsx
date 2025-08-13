@@ -1,3 +1,4 @@
+import Button from "@/components/UI/Button";
 import Image from "next/image";
 
 export const metadata = {
@@ -6,9 +7,15 @@ export const metadata = {
 
 export default async function Home() {
   return (
-    <main className="flex flex-col items-center justify-center flex-grow">
-      <div className="max-w-8xl flex flex-col lg:flex-row items-center gap-6 px-6">
-        <div className="relative w-[240px] h-[280px] md:w-[340px] md:h-[340px] lg:w-[480px] lg:h-[400px]">
+    <main className="flex flex-col items-center justify-center flex-grow bg-gradient-to-b from-blue-200 to-white dark:from-gray-800 dark:to-black">
+      <div className="max-w-7xl flex flex-col lg:flex-row items-center gap-8 px-6 py-12 relative">
+        <div className="absolute top-10 left-10 animate-bounce-slow">
+          <Image src="/pokeball.png" alt="Pokéball" width={40} height={40} />
+        </div>
+        <div className="absolute bottom-16 right-12 animate-bounce-slower">
+          <Image src="/pokeball.png" alt="Pokéball" width={50} height={50} />
+        </div>
+        <div className="relative w-[240px] h-[280px] md:w-[340px] md:h-[340px] lg:w-[480px] lg:h-[400px] animate-float">
           <Image
             src="/articuno.webp"
             alt="Articuno"
@@ -18,13 +25,14 @@ export default async function Home() {
             style={{ objectFit: "contain" }}
           />
         </div>
-        <div className="md:text-left max-w-md">
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 text-blue-400 dark:text-yellow-300">
+        <div className="md:text-left max-w-md z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 text-blue-400 dark:text-yellow-300 drop-shadow-lg animate-slide-in">
             Welcome to DexForge!
           </h1>
-          <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200">
+          <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 mb-6">
             Discover, build, and battle with your perfect Pokémon team!
           </p>
+          <Button>Get Started</Button>
         </div>
       </div>
     </main>

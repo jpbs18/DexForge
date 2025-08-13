@@ -11,7 +11,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-900 text-white shadow-md mb-4">
+    <nav className="bg-gray-900 text-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="hidden md:flex justify-center gap-8 h-14 items-center">
           {navLinks.map(({ label, path, icon: Icon }) => (
