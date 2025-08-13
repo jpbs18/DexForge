@@ -13,9 +13,8 @@ export default function SearchAndListWrapper({
   const [filteredPokemons, setFilteredPokemons] = useState(pokemons);
 
   const handleSearch = (term: string, type: string) =>{
-    console.log(type, term)
     if(!type && !term){
-      setFilteredPokemons(pokemons.slice(0, 12));
+      setFilteredPokemons(pokemons);
       return;
     }
 
