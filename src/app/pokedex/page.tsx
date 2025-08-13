@@ -1,8 +1,7 @@
-import PokemonList from "@/components/pokemon/PokemonList";
 import PokedexHeaderSection from "./PokedexHeaderSection";
-import SearchAndFilterSection from "./SearchAndFilterSection";
 import { Pokemon } from "@/models/pokemon";
 import { BASE_URL, PREFETCH_LIMIT_PER_PAGE } from "@/lib/env.server";
+import SearchAndListSection from "./SearchAndListWrapper";
 
 export const revalidate = 86400;
 export const metadata = {
@@ -29,8 +28,7 @@ export default async function PokedexPage() {
   return (
     <main className="max-w-8xl mx-auto p-4">
       <PokedexHeaderSection />
-      <SearchAndFilterSection />
-      <PokemonList initialData={pokemons} />
+      <SearchAndListSection pokemons={pokemons} />
     </main>
   );
 }
