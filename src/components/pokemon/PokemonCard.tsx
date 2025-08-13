@@ -39,7 +39,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
           {pokemon.types.map((type) => (
             <span
               key={type}
-              className={`text-xs font-semibold px-2 py-1 rounded border-2 border-white/50 ${typeColors[type]}`}
+              className={`text-xs font-semibold px-2 py-1 w-16 text-center rounded border-2 border-white/50 ${typeColors[type]}`}
             >
               {type}
             </span>
