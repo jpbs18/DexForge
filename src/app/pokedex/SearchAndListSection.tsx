@@ -5,15 +5,15 @@ import PokemonSearchAndFilter from "@/components/pokemon/PokemonSearchAndFilter"
 import { Pokemon } from "@/models/pokemon";
 import { useState } from "react";
 
-export default function SearchAndListWrapper({
+export default function SearchAndListSection({
   pokemons,
 }: {
   pokemons: Pokemon[];
 }) {
   const [filteredPokemons, setFilteredPokemons] = useState(pokemons);
 
-  const handleSearch = (term: string, type: string) =>{
-    if(!type && !term){
+  const handleSearch = (term: string, type: string) => {
+    if (!type && !term) {
       setFilteredPokemons(pokemons);
       return;
     }
@@ -25,12 +25,12 @@ export default function SearchAndListWrapper({
           (!type || p.types.includes(type.toLowerCase()))
       )
     );
-  }
+  };
 
   return (
     <>
       <PokemonSearchAndFilter onSearch={handleSearch} />
-      <PokemonList initialData={filteredPokemons} />
+      <PokemonList pokemons={filteredPokemons} />
     </>
   );
 }

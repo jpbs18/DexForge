@@ -1,7 +1,7 @@
 import PokedexHeaderSection from "./PokedexHeaderSection";
 import { Pokemon } from "@/models/pokemon";
 import { BASE_URL, PREFETCH_LIMIT_PER_PAGE } from "@/lib/env.server";
-import SearchAndListSection from "./SearchAndListWrapper";
+import SearchAndListSection from "./SearchAndListSection";
 
 export const revalidate = 86400;
 export const metadata = {

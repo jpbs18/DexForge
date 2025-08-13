@@ -5,30 +5,32 @@ import { PokemonCard } from "./PokemonCard";
 import { Pokemon } from "@/models/pokemon";
 import { LIMIT_PER_PAGE } from "@/lib/env.client";
 
-export default function PokemonList({
-  initialData,
-}: {
-  initialData: Pokemon[];
-}) {
+export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
   const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
   const [loading, setLoading] = useState(false);
 
   const handleLoadMore = () => {
     setLoading(true);
-    setVisibleCount((prev) =>
-      Math.min(prev + LIMIT_PER_PAGE, initialData.length)
-    );
+    setVisibleCount((prev) => Math.min(prev + LIMIT_PER_PAGE, pokemons.length));
     setLoading(false);
   };
+
+  if (!pokemons || pokemons.length === 0) {
+    return (
+      <p className="text-gray-700 dark:text-gray-200 mb-6 mx-4 text-center sm:text-xl md:text-2xl">
+        No Pokémon found
+      </p>
+    );
+  }
 
   return (
     <div>
       <ul className="grid sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {initialData.slice(0, visibleCount).map((pokemon: Pokemon) => (
+        {pokemons.slice(0, visibleCount).map((pokemon: Pokemon) => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </ul>
-      {visibleCount < initialData.length && (
+      {visibleCount < pokemons.length && (
         <button
           onClick={handleLoadMore}
           disabled={loading}
