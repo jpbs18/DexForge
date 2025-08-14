@@ -35,7 +35,7 @@ export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
         <Button
           onClick={handleLoadMore}
           disabled={loading}
-          className="bg-[#be0000] hover:bg-[#f80101] text-white px-4 py-2 mt-8 rounded-md block mx-auto transition-colors"
+          className="mt-8 rounded block mx-auto"
         >
           {loading ? "Loading..." : "Load More"}
         </Button>

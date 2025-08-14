@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import LinkButton from "@/components/UI/LinkButton";
 
 export const metadata = {
   title: "Not Found | DexForge.com",
@@ -21,12 +22,7 @@ export default function NotFound() {
       <p className="text-gray-700 dark:text-gray-200 mb-6 mx-4 text-center sm:text-xl md:text-2xl">
         Oops! Don&apos;t worry... Charizard will take you back home!
       </p>
-      <Link
-        href="/"
-        className="bg-[#be0000] hover:bg-[#f80101] text-white px-4 py-2 rounded-md transition-colors"
-      >
-        Go back home
-      </Link>
+      <LinkButton href="/">Return home</LinkButton>
     </main>
   );
 }

@@ -1,4 +1,5 @@
 import Button from "@/components/UI/Button";
+import LinkButton from "@/components/UI/LinkButton";
 import Image from "next/image";
 
 export const metadata = {
@@ -7,7 +8,7 @@ export const metadata = {
 
 export default async function Home() {
   return (
-    <main className="flex flex-col items-center justify-center flex-grow bg-gradient-to-b from-blue-200 to-white dark:from-gray-800 dark:to-black">
+    <main className="flex flex-col items-center justify-center flex-grow">
       <div className="max-w-7xl flex flex-col lg:flex-row items-center gap-8 px-6 py-12 relative">
         <div className="absolute top-10 left-10 animate-bounce-slow">
           <Image src="/pokeball.png" alt="Pokéball" width={40} height={40} />
@@ -32,7 +33,7 @@ export default async function Home() {
           <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 mb-6">
             Discover, build, and battle with your perfect Pokémon team!
           </p>
-          <Button>Get Started</Button>
+          <LinkButton href="/team-builder">Get Started</LinkButton>
         </div>
       </div>
     </main>

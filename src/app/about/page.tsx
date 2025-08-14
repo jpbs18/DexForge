@@ -41,7 +41,7 @@ export default function About() {
         </ul>
       </section>
 
-      <section className="mb-8 sm:mb-10 bg-gray-800 p-4 sm:p-6 rounded-lg shadow-sm text-white">
+      <section className="mb-8 sm:mb-10 bg-gray-900 p-4 sm:p-6 rounded-lg shadow-sm text-white">
         <p className="italic text-sm sm:text-base">
           This site is an unofficial fan project. Pokémon and Pokémon character
           names are trademarks of Nintendo, Game Freak, and The Pokémon Company.

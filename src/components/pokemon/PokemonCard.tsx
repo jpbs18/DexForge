@@ -4,7 +4,6 @@ import Image from "next/image";
 
 export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
   const primaryType = pokemon.types[0];
-  const cardBgClass = typeColors[primaryType] || "bg-gray-200";
 
   return (
     <li
@@ -22,7 +21,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
         </span>
       </div>
       <div
-        className={`relative p-6 flex flex-col items-center w-full ${cardBgClass}`}
+        className={`relative p-6 flex flex-col items-center w-full ${typeColors[primaryType]}`}
       >
         <div className="absolute inset-0 opacity-10 bg-[url('/pokeball-bg.svg')] bg-center bg-no-repeat bg-contain" />
         <div className="w-40 h-40 relative mb-4 z-10">
@@ -39,7 +38,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
           {pokemon.types.map((type) => (
             <span
               key={type}
-              className={`text-xs font-semibold px-2 py-1 w-16 text-center rounded border-2 border-white/50 ${typeColors[type]}`}
+              className={`text-xs font-semibold px-2 py-1 w-16 text-center rounded border-2 border-white/50 ${typeColors[type]} bg-opacity-80 backdrop-brightness-200 shadow-lg`}
             >
               {type}
             </span>
