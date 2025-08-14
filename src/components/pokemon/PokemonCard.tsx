@@ -8,7 +8,8 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
   return (
     <li
       className={`rounded-xl shadow-md overflow-hidden flex flex-col items-center mx-auto transform transition-all duration-300 
-    hover:-translate-y-2 hover:rotate-[5deg] hover:shadow-2xl hover:shadow-black/40 dark:hover:shadow-white/20 bg-white dark:bg-gray-800 border-2 border-indigo-100 cursor-pointer max-w-[250px] w-full`}
+        hover:-translate-y-2 hover:rotate-[5deg] hover:scale-105 hover:shadow-2xl hover:shadow-black/40 dark:hover:shadow-white/20
+      bg-white dark:bg-gray-800 border-2 border-indigo-100 cursor-pointer max-w-[250px] w-full`}
     >
       <div className="w-full bg-gray-800 text-white px-4 py-2 font-bold uppercase tracking-wide flex justify-between items-center">
         <span className="capitalize text-sm sm:text-base">
