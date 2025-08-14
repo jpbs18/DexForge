@@ -6,12 +6,24 @@ module.exports = {
     extend: {
       keyframes: {
         "slide-in-left": {
-          "0%": { transform: "translateX(-100%)", opacity: "0" },
-          "100%": { transform: "translateX(0)", opacity: "1" },
+          "0%": {
+            opacity: "0",
+            "--tw-translate-x": "-100%",
+          },
+          "100%": {
+            opacity: "1",
+            "--tw-translate-x": "0px",
+          },
         },
         "fade-slide-up": {
-          "0%": { opacity: 0, transform: "translateY(20px)" },
-          "100%": { opacity: 1, transform: "translateY(0)" },
+          "0%": {
+            opacity: "0",
+            "--tw-translate-y": "20px",
+          },
+          "100%": {
+            opacity: "1",
+            "--tw-translate-y": "0px",
+          },
         },
       },
       animation: {
