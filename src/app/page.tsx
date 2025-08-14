@@ -10,13 +10,13 @@ export default async function Home() {
   return (
     <main className="flex flex-col items-center justify-center flex-grow">
       <div className="max-w-7xl flex flex-col lg:flex-row items-center gap-8 px-6 py-12 relative">
-        <div className="absolute top-10 left-10 animate-bounce-slow">
+        <div className="absolute top-10 left-10 animate-slide-in-left">
           <Image src="/pokeball.png" alt="Pokéball" width={40} height={40} />
         </div>
-        <div className="absolute bottom-16 right-12 animate-bounce-slower">
+        <div className="absolute bottom-16 right-12 animate-slide-in-left">
           <Image src="/pokeball.png" alt="Pokéball" width={50} height={50} />
         </div>
-        <div className="relative w-[240px] h-[280px] md:w-[340px] md:h-[340px] lg:w-[480px] lg:h-[400px] animate-float">
+        <div className="relative w-[240px] h-[280px] md:w-[340px] md:h-[340px] lg:w-[480px] lg:h-[400px] animate-slide-in-left">
           <Image
             src="/articuno.webp"
             alt="Articuno"
