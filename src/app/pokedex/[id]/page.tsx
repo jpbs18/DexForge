@@ -11,8 +11,7 @@ interface PageProps {
 }
 
 export default async function PokemonDetailsPage({ params }: PageProps) {
-  const { id } = params;
-  const pokemon = await getPokemonDetails(id);
+  const pokemon = await getPokemonDetails(params.id);
 
   return (
     <main className="flex justify-center m-6 animate-fade-slide-up">
