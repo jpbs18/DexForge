@@ -6,11 +6,11 @@ import { Stats } from "@/models/pokemon";
 
 export const revalidate = 86400;
 
-export default async function PokemonDetailsPage({
-  params,
-}: {
+interface PageProps {
   params: { id: string };
-}) {
+}
+
+export default async function PokemonDetailsPage({ params }: PageProps) {
   const { id } = params;
   const pokemon = await getPokemonDetails(id);
 
