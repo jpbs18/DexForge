@@ -26,7 +26,7 @@ export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
 
   return (
     <div>
-      <ul className="grid sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6">
+      <ul className="grid grid-cols-1 justify-items-center sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6">
         {pokemons.slice(0, visibleCount).map((pokemon: Pokemon) => (
           <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}

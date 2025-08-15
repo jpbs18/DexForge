@@ -1,5 +1,5 @@
 import { Pokemon } from "@/models/pokemon";
-import { typeColors } from "@/utils/type-colors";
+import { typeColors } from "@/utils/stats";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -41,7 +41,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
             {pokemon.types.map((type) => (
               <span
                 key={type}
-                className={`text-xs font-semibold px-2 py-1 w-16 text-center rounded border-2 border-white/50 ${typeColors[type]} bg-opacity-80 backdrop-brightness-200 shadow-lg`}
+                className={`rounded-full capitalize font-semibold text-xs py-1 w-16 text-center border-2 border-white/50 ${typeColors[type]} bg-opacity-70 backdrop-brightness-200 shadow-lg`}
               >
                 {type}
               </span>

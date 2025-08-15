@@ -1,11 +1,11 @@
 "use client";
 
-import { pokemonTypes } from "@/utils/type-colors";
+import { pokemonTypes } from "@/utils/stats";
 import { useState } from "react";
 
 enum Field {
-    name,
-    type
+  name,
+  type,
 }
 
 export default function PokemonSearchAndFilter({
