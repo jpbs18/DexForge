@@ -7,11 +7,12 @@ import { Stats } from "@/models/pokemon";
 export const revalidate = 86400;
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function PokemonDetailsPage({ params }: PageProps) {
-  const pokemon = await getPokemonDetails(params.id);
+  const { id } = await params;
+  const pokemon = await getPokemonDetails(id);
 
   return (
     <main className="flex justify-center m-6 animate-fade-slide-up">
