@@ -6,8 +6,12 @@ import { Stats } from "@/models/pokemon";
 
 export const revalidate = 86400;
 
-export default async function PokemonDetailsPage({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function PokemonDetailsPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   const pokemon = await getPokemonDetails(id);
 
   return (
@@ -20,6 +24,7 @@ export default async function PokemonDetailsPage({ params }: { params: { id: str
             <Image
               src={pokemon.front_default}
               alt={pokemon.name}
+              sizes="(max-width: 768px) 192px, 192px"
               fill
               className="object-contain"
               priority
