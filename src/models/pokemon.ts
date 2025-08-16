@@ -17,6 +17,7 @@ export interface PokemonDetails {
   genders: string[];
   weakenesses: string[];
   evolutions: { species: string }[];
+  category: string;
 }
 
 export interface PokeData {
