@@ -26,7 +26,6 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
         <div
           className={`relative p-6 flex flex-col items-center w-full ${typeColors[primaryType]}`}
         >
-          <div className="absolute inset-0 opacity-10 bg-[url('/pokeball-bg.svg')] bg-center bg-no-repeat bg-contain" />
           <div className="w-40 h-40 relative mb-4 z-10">
             <Image
               src={pokemon.front_default}
