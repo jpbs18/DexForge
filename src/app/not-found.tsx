@@ -7,8 +7,8 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <main className="flex flex-col items-center justify-center flex-grow">
-      <div className="mb-4 mx-8 relative w-[240px] h-[185px] md:w-[360px] md:h-[277px] lg:w-[480px] lg:h-[370px] animate-slide-in-left">
+    <main className="flex flex-col items-center justify-center flex-grow animate-fade-slide-up">
+      <div className="mb-4 mx-8 relative w-[240px] h-[185px] md:w-[360px] md:h-[277px] lg:w-[480px] lg:h-[370px]">
         <Image
           src="/charizard.webp"
           alt="Charizard"

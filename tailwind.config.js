@@ -5,16 +5,6 @@ module.exports = {
   theme: {
     extend: {
       keyframes: {
-        "slide-in-left": {
-          "0%": {
-            opacity: "0",
-            "--tw-translate-x": "-100%",
-          },
-          "100%": {
-            opacity: "1",
-            "--tw-translate-x": "0px",
-          },
-        },
         "fade-slide-up": {
           "0%": {
             opacity: "0",
@@ -27,7 +17,6 @@ module.exports = {
         },
       },
       animation: {
-        "slide-in-left": "slide-in-left 1s ease-out forwards",
         "fade-slide-up": "fade-slide-up 0.5s ease-out forwards",
       },
     },
