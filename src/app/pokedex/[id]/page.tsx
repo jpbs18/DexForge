@@ -10,9 +10,9 @@ export const revalidate = 86400;
 export default async function PokemonDetailsPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const { id } = params;
+  const { id } = await params; 
   const pokemon = await getPokemonDetails(id);
 
   const pokemonId = parseInt(id, 10);
