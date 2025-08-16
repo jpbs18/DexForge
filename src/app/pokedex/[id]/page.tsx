@@ -17,7 +17,7 @@ export default async function PokemonDetailsPage({
   return (
     <main className="flex justify-center m-6 animate-fade-slide-up">
       <div
-        className={`max-w-2xl lg:max-w-3xl bg-gray-300 text-gray-800 rounded-xl shadow-lg p-6`}
+        className={`w-full max-w-2xl lg:max-w-3xl bg-gray-800 text-gray-300 dark:bg-gray-300 dark:text-gray-800 rounded-xl shadow-lg p-6`}
       >
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="relative w-48 h-48 flex-shrink-0">
@@ -40,14 +40,14 @@ export default async function PokemonDetailsPage({
                 return (
                   <span
                     key={type}
-                    className={`rounded-full capitalize font-semibold text-xs py-1 w-16 text-center border-2 border-white/50 ${bg} ${text} bg-opacity-70 backdrop-brightness-200 shadow-lg`}
+                    className={`rounded-full capitalize font-semibold text-xs py-1 w-16 text-center border ${bg} ${text} backdrop-brightness-200 shadow-lg`}
                   >
                     {type}
                   </span>
                 );
               })}
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm text-gray-700">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm dark:text-gray-700">
               <div>
                 <span className="font-semibold">Height:</span>{" "}
                 {(pokemon.height / 10).toFixed(1)} m
@@ -80,25 +80,28 @@ export default async function PokemonDetailsPage({
         </section>
         <section className="mt-6">
           <h2 className="text-2xl font-semibold mb-6">Evolutions</h2>
-          <div className="flex flex-col md:flex-row  items:center justify-center">
+          <div className="flex flex-col md:flex-row items-center justify-center">
             {pokemon.evolutions.map((evo, index) => (
-              <div key={index} className="flex sm:flex-col md:flex-row">
+              <div
+                key={index}
+                className="flex flex-col md:flex-row items-center"
+              >
                 <div className="flex flex-col items-center">
                   <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center shadow-lg overflow-hidden">
                     <Image
                       src={evo.species}
                       alt={`Evolution ${index + 1}`}
-                      width={96}
-                      height={96}
+                      width={120}
+                      height={120}
                       className="object-contain"
                     />
                   </div>
                 </div>
                 {index < pokemon.evolutions.length - 1 && (
-                  <div className="flex items-center justify-center md:mx-2 my-2 md:my-0">
+                  <div className="flex items-center justify-center my-2 md:my-0 md:mx-2">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6 md:rotate-0 rotate-90"
+                      className="h-6 w-6 transform rotate-90 md:rotate-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -116,6 +119,7 @@ export default async function PokemonDetailsPage({
             ))}
           </div>
         </section>
+
         <section className="mt-6">
           <h2 className="text-2xl font-semibold mb-6">Weaknesses</h2>
           <div className="flex gap-2 flex-wrap">
@@ -124,7 +128,7 @@ export default async function PokemonDetailsPage({
               return (
                 <span
                   key={weakeness}
-                  className={`rounded-full capitalize font-semibold text-xs py-1 w-16 text-center border-2 border-white/50 ${bg} ${text} bg-opacity-70 backdrop-brightness-200 shadow-lg`}
+                  className={`rounded-full capitalize font-semibold text-xs py-1 w-16 border text-center ${bg} ${text} backdrop-brightness-200 shadow-lg`}
                 >
                   {weakeness}
                 </span>

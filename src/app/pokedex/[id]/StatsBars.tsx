@@ -20,9 +20,9 @@ export default function StatBars({ stat }: { stat: Stats }) {
         <span>{stat.stat.name.replace("-", " ")}</span>
         <span>{stat.base_stat}</span>
       </div>
-      <div className={`w-full h-3 bg-gray-400 rounded overflow-hidden`}>
+      <div className={`w-full h-3 bg-gray-600 rounded overflow-hidden`}>
         <div
-          className={`h-3 rounded  bg-gray-700 transition-all duration-1000 ease-out`}
+          className={`h-3 rounded  bg-gray-300 transition-all duration-1000 ease-out`}
           style={{ width: `${width}%` }}
         />
       </div>
