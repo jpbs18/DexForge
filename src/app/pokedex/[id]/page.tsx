@@ -49,7 +49,7 @@ export default async function PokemonDetailsPage({
               href={href}
               className={`absolute top-2 sm:top-3 ${pos} z-50 
                    text-gray-400 hover:text-gray-200 
-                   dark:text-gray-300 dark:hover:text-white
+                   dark:text-gray-700 dark:hover:text-gray-900
                    text-2xl sm:text-3xl leading-none`}
             >
               {symbol}
