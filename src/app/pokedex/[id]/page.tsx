@@ -1,6 +1,6 @@
 import { getPokemonDetails } from "@/lib/api";
 import Image from "next/image";
-import StatsBars from "./StatsBars";
+import PokemonStatsBars from "../../../components/pokemon/PokemonStatsBars";
 import { typeColors } from "@/utils/stats";
 import { Stats } from "@/models/pokemon";
 import Link from "next/link";
@@ -12,7 +12,7 @@ export default async function PokemonDetailsPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
-  const { id } = await params; 
+  const { id } = await params;
   const pokemon = await getPokemonDetails(id);
 
   const pokemonId = parseInt(id, 10);
@@ -104,7 +104,7 @@ export default async function PokemonDetailsPage({
           </h2>
           <div className="space-y-3">
             {pokemon.stats.map((s: Stats) => (
-              <StatsBars key={s.stat.name} stat={s} />
+              <PokemonStatsBars key={s.stat.name} stat={s} />
             ))}
           </div>
         </section>

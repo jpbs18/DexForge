@@ -32,7 +32,7 @@ export default async function Home() {
           <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 mb-6">
             Discover, build, and battle with your perfect Pokémon team!
           </p>
-          <LinkButton href="/team-builder">Get Started</LinkButton>
+          <LinkButton href="/games">Start playing!</LinkButton>
         </div>
       </div>
     </main>
