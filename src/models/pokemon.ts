@@ -15,7 +15,7 @@ export interface PokemonDetails {
   height: number;
   stats: Stats[];
   genders: string[];
-  weakenesses: string[];
+  weaknesses: string[];
   evolutions: { species: string }[];
   category: string;
 }

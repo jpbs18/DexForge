@@ -5,7 +5,7 @@ import PokemonSearchAndFilter from "@/components/pokemon/PokemonSearchAndFilter"
 import { Pokemon } from "@/models/pokemon";
 import { useState } from "react";
 
-export default function SearchAndListSection({
+export default function PokemonSearchAndListSection({
   pokemons,
 }: {
   pokemons: Pokemon[];

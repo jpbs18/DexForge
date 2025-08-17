@@ -1,5 +1,5 @@
 import { fetchAllPokemons } from "@/lib/api";
-import SearchAndListSection from "./SearchAndListSection";
+import PokemonSearchAndListSection from "./PokemonSearchAndListSection";
 
 export const revalidate = 86400;
 export const metadata = {
@@ -22,7 +22,7 @@ export default async function PokedexPage() {
           <span className="font-semibold text-green-600">type</span>.
         </p>
       </section>
-      <SearchAndListSection pokemons={pokemons} />
+      <PokemonSearchAndListSection pokemons={pokemons} />
     </main>
   );
 }

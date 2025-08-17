@@ -63,8 +63,6 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
     }, 200);
   };
 
-  if (!currentPokemon) return <p>Loading...</p>;
-
   return (
     <div className="flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 mt-4 animate-fade-slide-up">
       <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-8 text-blue-400 dark:text-yellow-300 drop-shadow-lg">
@@ -73,22 +71,24 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
       <div className="relative w-40 h-40 sm:w-50 sm:h-50 md:w-60 md:h-60 lg:w-60 lg:h-60 mb-6">
         <AnimatePresence mode="wait">
           <motion.div
-            key={currentPokemon.name}
+            key={currentPokemon?.name}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
             className="relative w-full h-full"
           >
-            <Image
-              src={currentPokemon.front_default}
-              alt={currentPokemon.name}
-              fill
-              style={{ objectFit: "contain" }}
-              className={`transition-all duration-500 ${
-                showAnswer ? "brightness-100" : "brightness-0"
-              }`}
-            />
+            {currentPokemon?.front_default && (
+              <Image
+                src={currentPokemon.front_default}
+                alt={currentPokemon.name}
+                fill
+                style={{ objectFit: "contain" }}
+                className={`transition-all duration-500 ${
+                  showAnswer ? "brightness-100" : "brightness-0"
+                }`}
+              />
+            )}
           </motion.div>
         </AnimatePresence>
       </div>
@@ -98,23 +98,23 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
             className={
               isLastRound
                 ? "text-yellow-500"
-                : selected === currentPokemon.name
+                : selected === currentPokemon?.name
                 ? "text-green-500 animate-bounce"
                 : "text-red-500 animate-shake"
             }
           >
             {isLastRound
               ? "🎉 Game Over!"
-              : selected === currentPokemon.name
+              : selected === currentPokemon?.name
               ? "Correct! 🎉"
-              : `Wrong! It's ${currentPokemon.name}`}
+              : `Wrong! It's ${currentPokemon?.name}`}
           </span>
         )}
       </div>
       <div className="w-6/12 sm:w-full max-w-md mb-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {options.map((option) => {
           const isSelected = selected === option;
-          const isCorrect = option === currentPokemon.name;
+          const isCorrect = option === currentPokemon?.name;
 
           return (
             <button

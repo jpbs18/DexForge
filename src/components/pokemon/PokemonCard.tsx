@@ -15,9 +15,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
       >
         <div className="w-full bg-gray-800 text-white px-4 py-2 font-bold uppercase tracking-wide flex justify-between items-center">
           <span className="capitalize text-sm sm:text-base">
-            {pokemon.name.length >= 12
-              ? pokemon.name.split("-")[0]
-              : pokemon.name}
+            {pokemon.name}
           </span>
           <span className="text-xs sm:text-sm">
             #{pokemon.id.toString().padStart(3, "0")}

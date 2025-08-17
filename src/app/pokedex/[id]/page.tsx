@@ -14,37 +14,47 @@ export default async function PokemonDetailsPage({
 }) {
   const { id } = await params;
   const pokemon = await getPokemonDetails(id);
-
   const pokemonId = parseInt(id, 10);
   const prevId = pokemonId > 1 ? pokemonId - 1 : null;
   const nextId = pokemonId < 1025 ? pokemonId + 1 : null;
 
+  if (!pokemon) {
+    return (
+      <main className="flex justify-center items-center flex-grow">
+        <p className="text-2xl font-semibold">Pokémon not found.</p>
+      </main>
+    );
+  }
+
   return (
     <main className="flex justify-center m-6 animate-fade-slide-up relative">
-      <div className="relative w-full max-w-2xl lg:max-w-3xl bg-gray-800 text-gray-300 dark:bg-gray-300 dark:text-gray-800 rounded-xl shadow-lg p-6">
-        {prevId ? (
-          <Link
-            href={`/pokedex/${prevId}`}
-            className="absolute top-2 left-2 sm:top-3 sm:left-3 z-50 text-gray-800 hover:text-gray-900 text-2xl sm:text-3xl leading-none"
-          >
-            ←
-          </Link>
-        ) : (
-          <span className="absolute top-2 left-2 sm:top-3 sm:left-3 z-50 text-gray-500 text-2xl sm:text-3xl leading-none cursor-not-allowed">
-            ←
-          </span>
-        )}
-        {nextId ? (
-          <Link
-            href={`/pokedex/${nextId}`}
-            className="absolute top-2 right-2 sm:top-3 sm:right-3 z-50 text-gray-800 hover:text-gray-900 text-2xl sm:text-3xl leading-none"
-          >
-            →
-          </Link>
-        ) : (
-          <span className="absolute top-2 right-2 sm:top-3 sm:right-3 z-50 text-gray-500 text-2xl sm:text-3xl leading-none cursor-not-allowed">
-            →
-          </span>
+      <div className="relative w-full max-w-2xl lg:max-w-3xl bg-gray-900 text-gray-200 dark:bg-gray-300 dark:text-gray-800 rounded-xl shadow-lg p-6">
+        {[
+          {
+            id: prevId,
+            href: `/pokedex/${prevId}`,
+            pos: "left-2 sm:left-3",
+            symbol: "←",
+          },
+          {
+            id: nextId,
+            href: `/pokedex/${nextId}`,
+            pos: "right-2 sm:right-3",
+            symbol: "→",
+          },
+        ].map(({ id, href, pos, symbol }) =>
+          id ? (
+            <Link
+              key={symbol}
+              href={href}
+              className={`absolute top-2 sm:top-3 ${pos} z-50 
+                   text-gray-400 hover:text-gray-200 
+                   dark:text-gray-300 dark:hover:text-white
+                   text-2xl sm:text-3xl leading-none`}
+            >
+              {symbol}
+            </Link>
+          ) : null
         )}
         <div className="flex flex-col md:flex-row items-center gap-4 mt-6">
           <div className="relative w-48 h-48 flex-shrink-0">
@@ -59,10 +69,7 @@ export default async function PokemonDetailsPage({
           </div>
           <div className="flex-1">
             <h1 className="text-4xl font-bold capitalize mb-8 text-center md:text-left mx-auto md:mx-0">
-              #{pokemon.id}{" "}
-              {pokemon.name.length >= 12
-                ? pokemon.name.split("-")[0]
-                : pokemon.name}
+              #{pokemon.id} {pokemon.name}
             </h1>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm dark:text-gray-700">
               <div>
@@ -96,8 +103,6 @@ export default async function PokemonDetailsPage({
             </div>
           </div>
         </div>
-
-        {/* Stats */}
         <section className="mt-6 sm:mt-8 md:mt-6">
           <h2 className="text-2xl font-semibold mb-4 capitalize text-center md:text-left mx-auto md:mx-0">
             Stats
@@ -108,8 +113,6 @@ export default async function PokemonDetailsPage({
             ))}
           </div>
         </section>
-
-        {/* Evolutions */}
         <section className="mt-6 sm:mt-8 md:mt-6">
           <h2 className="text-2xl font-semibold mb-4 capitalize text-center md:text-left mx-auto md:mx-0">
             Evolutions
@@ -131,7 +134,6 @@ export default async function PokemonDetailsPage({
                     />
                   </div>
                 </div>
-
                 {index < pokemon.evolutions.length - 1 && (
                   <div className="flex items-center justify-center mt-1 mb-1 md:mx-2 md:my-0">
                     <svg
@@ -154,8 +156,6 @@ export default async function PokemonDetailsPage({
             ))}
           </div>
         </section>
-
-        {/* Types */}
         <section className="mt-6 sm:mt-8 md:mt-6">
           <h2 className="text-2xl font-semibold mb-4 capitalize text-center md:text-left mx-auto md:mx-0">
             Types
@@ -174,21 +174,19 @@ export default async function PokemonDetailsPage({
             })}
           </div>
         </section>
-
-        {/* Weaknesses */}
         <section className="mt-6 sm:mt-8 md:mt-6">
           <h2 className="text-2xl font-semibold mb-4 capitalize text-center md:text-left mx-auto md:mx-0">
             Weaknesses
           </h2>
           <div className="flex flex-wrap justify-center md:justify-start gap-2">
-            {pokemon.weakenesses.map((weakeness) => {
-              const [bg, text] = typeColors[weakeness].split(" ");
+            {pokemon.weaknesses?.map((weakness) => {
+              const [bg, text] = typeColors[weakness].split(" ");
               return (
                 <span
-                  key={weakeness}
+                  key={weakness}
                   className={`rounded-full capitalize font-semibold text-xs py-1 w-16 border text-center ${bg} ${text} backdrop-brightness-200 shadow-lg`}
                 >
-                  {weakeness}
+                  {weakness}
                 </span>
               );
             })}
