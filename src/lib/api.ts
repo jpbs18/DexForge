@@ -16,8 +16,8 @@ export async function fetchAllPokemons(): Promise<Pokemon[]> {
         const data = await res.json();
         return data as { data: Pokemon[] };
       })
-      .catch((err) => {
-        console.error(err);
+      .catch((error) => {
+        console.error(`❌ Error fetching Pokémons:`, error);
         return { data: [] };
       })
   );
@@ -40,7 +40,7 @@ export async function getPokemonDetails(
 
     return (await res.json()) as PokemonDetails;
   } catch (error) {
-    console.error(`Error fetching Pokémon details for id ${id}:`, error);
+    console.error(`❌ Error fetching Pokémon details for id ${id}:`, error);
     return null;
   }
 }
