@@ -13,7 +13,7 @@ export default function PokemonStatBars({ stat }: { stat: Stats }) {
   }, [percentage]);
 
   return (
-    <div>
+    <>
       <div className="flex justify-between mb-1 capitalize text-sm">
         <span>{stat.stat.name.replace("-", " ")}</span>
         <span>{stat.base_stat}</span>
@@ -26,6 +26,6 @@ export default function PokemonStatBars({ stat }: { stat: Stats }) {
           style={{ width: `${width}%` }}
         />
       </div>
-    </div>
+    </>
   );
 }

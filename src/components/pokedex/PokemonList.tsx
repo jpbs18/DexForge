@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { PokemonCard } from "./PokemonCard";
 import { Pokemon } from "@/models/pokemon";
 import { LIMIT_PER_PAGE } from "@/lib/env.client";
-import Button from "../UI/Button";
+import Button from "@/components/UI/Button";
+import { PokemonCard } from "@/components/pokedex/PokemonCard";
 
 export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
   const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
