@@ -84,6 +84,7 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
                 alt={currentPokemon.name}
                 fill
                 style={{ objectFit: "contain" }}
+                unoptimized
                 className={`transition-all duration-500 ${
                   showAnswer ? "brightness-100" : "brightness-0"
                 }`}
