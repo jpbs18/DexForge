@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DexForge",
     description: "Build your perfect Pokémon team. Explore. Battle. Learn",
-    url: "https://yourdomain.com",
+    url: "https://dex-forge.vercel.app",
     siteName: "DexForge",
     images: [
       {
-        url: "https://yourdomain.com/pokeball.png",
+        url: "https://dex-forge.vercel.app/pokeball.png",
         width: 1200,
         height: 630,
         alt: "DexForge Open Graph Image",
@@ -36,6 +36,28 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
     type: "website",
+  },
+  alternates: {
+    canonical: "https://dex-forge.vercel.app",
+  },
+  keywords: [
+    "Pokémon",
+    "Pokédex",
+    "Pokémon team builder",
+    "Pokémon battle",
+    "DexForge",
+  ],
+  twitter: {
+    card: "summary_large_image",
+    title: "DexForge",
+    description: "Build your perfect Pokémon team. Explore. Battle. Learn",
+    images: ["https://dex-forge.vercel.app/pokeball.png"],
+    creator: "@jpbs18",
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
   },
   robots: {
     index: true,

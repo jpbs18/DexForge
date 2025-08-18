@@ -1,6 +1,4 @@
 import { getPokemonDetails } from "@/lib/api";
-
-import Link from "next/link";
 import PokemonStats from "@/components/details/PokemonStats";
 import PokemonEvolutions from "@/components/details/PokemonEvolutions";
 import PokemonTypes from "@/components/details/PokemonTypes";
