@@ -20,6 +20,8 @@ export const metadata: Metadata = {
   description: "Build your perfect Pokémon team. Explore. Battle. Learn",
   icons: {
     icon: "/pokeball.png",
+    shortcut: "/pokeball.png",
+    apple: "/pokeball.png",
   },
   openGraph: {
     title: "DexForge",
@@ -54,11 +56,6 @@ export const metadata: Metadata = {
     images: ["https://dex-forge.vercel.app/pokeball.png"],
     creator: "@jpbs18",
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
   robots: {
     index: true,
     follow: true,
@@ -73,6 +70,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body
         className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
       >
