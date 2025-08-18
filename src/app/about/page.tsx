@@ -1,23 +1,23 @@
-"use client";
+export const metadata = {
+  title: "About | DexForge.com",
+};
 
-export default function About() {
+export default async function About() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 text-gray-100 animate-fade-slide-up">
       <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center">
         About{" "}
         <span className="text-yellow-300">DexForge</span>
       </h1>
-
       <p className="text-base sm:text-lg mb-6 sm:mb-8 text-center max-w-3xl mx-auto">
         Welcome, Trainer! 🧢 This is your ultimate Pokémon companion — browse
         every Pokémon, explore their stats, discover evolutions, and build your
         dream team. Whether you’re just starting your journey or aiming to
         complete your Pokédex, DexForge is here to help you on your adventure.
       </p>
-
       <section className="mb-8 sm:mb-10">
         <h2 className="text-xl sm:text-2xl font-semibold mb-3">Features</h2>
-        <ul className="list-disc list-inside space-y-2 text-sm">
+        <ul className="list-disc space-y-2 text-sm sm:text-base pl-4">
           <li>
             <strong>Pokédex Search</strong> – Find Pokémon by name, type,
             generation, or base stats.
@@ -40,7 +40,6 @@ export default function About() {
           </li>
         </ul>
       </section>
-
       <section className="mb-8 sm:mb-10 bg-gray-900 p-4 sm:p-6 rounded-lg shadow-sm text-white">
         <p className="italic text-sm sm:text-base">
           This site is an unofficial fan project. Pokémon and Pokémon character
@@ -48,7 +47,6 @@ export default function About() {
           Data and sprites are provided by PokéAPI and other community resources
         </p>
       </section>
-
       <section className="mb-8 sm:mb-10">
         <h2 className="text-xl sm:text-2xl font-semibold mb-3">
           Behind the Pokédex
@@ -61,10 +59,9 @@ export default function About() {
           deliver a smooth and feature-rich experience for every Trainer.
         </p>
       </section>
-
       <section>
         <h2 className="text-xl sm:text-2xl font-semibold mb-3">Credits</h2>
-        <ul className="list-disc list-inside space-y-1 text-sm sm:text-base">
+        <ul className="list-disc space-y-1 pl-4 text-sm sm:text-base">
           <li>
             Pokémon data from{" "}
             <a
@@ -103,7 +100,6 @@ export default function About() {
           </li>
         </ul>
       </section>
-
       <section className="mt-10 text-center">
         <h2 className="text-xl sm:text-2xl font-semibold mb-3">
           Connect with Me

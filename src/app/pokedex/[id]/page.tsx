@@ -7,6 +7,13 @@ import Link from "next/link";
 
 export const revalidate = 86400;
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const pokemon = await getPokemonDetails(params.id);
+  return {
+    title: pokemon ? `${pokemon.name} | DexForge.com` : "Pokémon | DexForge.com",
+  };
+}
+
 export default async function PokemonDetailsPage({
   params,
 }: {

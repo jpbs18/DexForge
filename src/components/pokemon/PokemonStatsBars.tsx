@@ -1,12 +1,10 @@
 "use client";
 
 import { Stats } from "@/models/pokemon";
-import { maxStats } from "@/utils/stats";
 import { useEffect, useState } from "react";
 
 export default function PokemonStatBars({ stat }: { stat: Stats }) {
-  const max = maxStats[stat.stat.name] || 100;
-  const percentage = (stat.base_stat / max) * 100;
+  const percentage = (stat.base_stat / 255) * 100;
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
