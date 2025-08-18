@@ -28,7 +28,7 @@ export default async function PokemonDetailsPage({
 
   return (
     <main className="flex justify-center m-6 animate-fade-slide-up relative">
-      <div className="relative w-full max-w-2xl lg:max-w-3xl bg-gray-900 text-gray-200 dark:bg-gray-300 dark:text-gray-800 rounded-xl shadow-lg p-6">
+      <div className="relative w-full max-w-2xl lg:max-w-3xl bg-gray-300 text-gray-800 rounded-xl shadow-lg p-6">
         {[
           {
             id: prevId,
@@ -47,9 +47,8 @@ export default async function PokemonDetailsPage({
             <Link
               key={symbol}
               href={href}
-              className={`absolute top-2 sm:top-3 ${pos} z-50 
-                   text-gray-400 hover:text-gray-200 
-                   dark:text-gray-700 dark:hover:text-gray-900
+              className={`absolute top-2 sm:top-3 ${pos} z-50                
+                  text-gray-700 hover:text-gray-900
                    text-2xl sm:text-3xl leading-none`}
             >
               {symbol}
@@ -72,7 +71,7 @@ export default async function PokemonDetailsPage({
             <h1 className="text-4xl font-bold capitalize mb-8 text-center md:text-left mx-auto md:mx-0">
               #{pokemon.id} {pokemon.name}
             </h1>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm dark:text-gray-700">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm text-gray-700">
               <div>
                 <span className="font-semibold">Height:</span>{" "}
                 {(pokemon.height / 10).toFixed(1)} m

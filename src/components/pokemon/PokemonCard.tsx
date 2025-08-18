@@ -10,8 +10,8 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
     <Link href={`/pokedex/${pokemon.id}`} className="w-full max-w-[250px]">
       <li
         className={`rounded-xl shadow-md overflow-hidden flex flex-col items-center mx-auto duration-300 
-        hover:rotate-[3deg] hover:shadow-2xl animate-fade-slide-up hover:shadow-black/40 dark:hover:shadow-white/20
-      bg-white dark:bg-gray-800 border-2 border-indigo-100 cursor-pointer max-w-[250px] w-full`}
+        hover:rotate-[3deg] hover:shadow-2xl animate-fade-slide-up hover:shadow-black
+      bg-gray-800 border-2 border-indigo-100 cursor-pointer max-w-[250px] w-full`}
       >
         <div className="w-full bg-gray-800 text-white px-4 py-2 font-bold uppercase tracking-wide flex justify-between items-center">
           <span className="capitalize text-sm sm:text-base">

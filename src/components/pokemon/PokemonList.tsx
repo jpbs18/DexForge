@@ -18,7 +18,7 @@ export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
 
   if (!pokemons || pokemons.length === 0) {
     return (
-      <p className="text-gray-700 dark:text-gray-200 mb-6 mx-4 text-center sm:text-xl md:text-2xl">
+      <p className="text-gray-200 mb-6 mx-4 text-center sm:text-xl md:text-2xl">
         No Pokémon matched your search
       </p>
     );

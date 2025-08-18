@@ -2,10 +2,10 @@
 
 export default function About() {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 text-gray-800 dark:text-gray-100 animate-fade-slide-up">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 text-gray-100 animate-fade-slide-up">
       <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center">
         About{" "}
-        <span className="text-blue-400 dark:text-yellow-300">DexForge</span>
+        <span className="text-yellow-300">DexForge</span>
       </h1>
 
       <p className="text-base sm:text-lg mb-6 sm:mb-8 text-center max-w-3xl mx-auto">
@@ -133,7 +133,7 @@ export default function About() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            className="hover:text-gray-900 dark:hover:text-white transition-colors"
+            className="hover:text-white transition-colors"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

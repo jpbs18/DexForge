@@ -27,10 +27,10 @@ export default async function Home() {
           />
         </div>
         <div className="md:text-left max-w-md z-10">
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 text-blue-400 dark:text-yellow-300 drop-shadow-lg">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 text-yellow-300 drop-shadow-lg">
             Welcome to DexForge!
           </h1>
-          <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200 mb-6">
+          <p className="text-lg md:text-xl text-gray-200 mb-6">
             Discover, build, and battle with your perfect Pokémon team!
           </p>
           <LinkButton href="/games">Start playing!</LinkButton>

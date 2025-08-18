@@ -21,10 +21,10 @@ export default function PokemonStatBars({ stat }: { stat: Stats }) {
         <span>{stat.base_stat}</span>
       </div>
       <div
-        className={`w-full h-3 bg-gray-600 dark:bg-gray-400 rounded overflow-hidden`}
+        className={`w-full h-3 bg-gray-400 rounded overflow-hidden`}
       >
         <div
-          className={`h-3 rounded  bg-gray-300 dark:bg-gray-700 transition-all duration-1000 ease-out`}
+          className={`h-3 rounded bg-gray-700 transition-all duration-1000 ease-out`}
           style={{ width: `${width}%` }}
         />
       </div>
