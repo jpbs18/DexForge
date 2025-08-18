@@ -52,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
+        className={`dark flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
       >
         <Header />
         <Navbar />
