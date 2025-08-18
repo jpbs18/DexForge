@@ -64,6 +64,7 @@ export default async function PokemonDetailsPage({
               sizes="(max-width: 768px) 192px, 192px"
               fill
               className="object-contain"
+              unoptimized
               priority
             />
           </div>
@@ -130,6 +131,7 @@ export default async function PokemonDetailsPage({
                       alt={`Evolution ${index + 1}`}
                       width={120}
                       height={120}
+                      unoptimized
                       className="object-contain"
                     />
                   </div>

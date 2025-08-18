@@ -8,6 +8,7 @@ export default function Loading() {
         alt="Loading Pokéball"
         width={64}
         height={64}
+        unoptimized
         className="animate-spin"
       />
       <p className="font-semibold text-2xl mt-4">Loading...</p>

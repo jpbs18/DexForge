@@ -29,6 +29,7 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
               src={pokemon.front_default}
               alt={pokemon.name}
               fill
+              unoptimized
               style={{ objectFit: "contain" }}
               sizes="160px"
               loading="lazy"

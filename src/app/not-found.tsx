@@ -14,6 +14,7 @@ export default function NotFound() {
           alt="Charizard"
           priority
           fill
+          unoptimized
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 480px"
           style={{ objectFit: "contain" }}
         />
