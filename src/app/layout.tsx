@@ -50,9 +50,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
-        className={`dark flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
+        className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
       >
         <Header />
         <Navbar />
