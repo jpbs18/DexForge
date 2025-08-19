@@ -39,9 +39,9 @@ export default function NewsPage() {
     <div className="container mx-auto p-4 animate-fade-slide-up">
       <h1 className="text-3xl md:text-4xl text-center font-bold my-8 text-yellow-300 ">Latest Pokémon News</h1>
       <ul className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {newsItems.map((item, index) => (
+        {newsItems.map((item) => (
           <li
-            key={`${index}-item.description`}
+            key={item.url}
             className="animate-fade-slide-up"
           >
             <NewsCard article={item} />
