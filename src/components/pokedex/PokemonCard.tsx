@@ -2,8 +2,9 @@ import { Pokemon } from "@/models/pokemon";
 import { typeColors } from "@/utils/stats";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
-export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
+function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
   const primaryType = pokemon.types[0];
 
   return (
@@ -42,3 +43,5 @@ export function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
     </Link>
   );
 }
+
+export default React.memo(PokemonCard);

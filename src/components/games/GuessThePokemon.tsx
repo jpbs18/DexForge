@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Pokemon } from "@/models/pokemon";
 import { AnimatePresence, motion } from "framer-motion";
+import Button from "../UI/Button";
 
 export function shuffleArray<T>(array: T[]): T[] {
   const arr = [...array];
@@ -139,19 +140,9 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
       {showAnswer && (
         <>
           {!isLastRound ? (
-            <button
-              onClick={handleNextRound}
-              className="py-2 sm:py-3 px-5 sm:px-6 bg-yellow-500 rounded font-bold hover:bg-yellow-600 transition text-sm sm:text-base"
-            >
-              Next Pokémon
-            </button>
+            <Button onClick={handleNextRound}>Next Pokémon</Button>
           ) : (
-            <button
-              onClick={handleReset}
-              className="py-2 sm:py-3 px-5 sm:px-6 bg-green-500 rounded font-bold hover:bg-green-600 transition text-sm sm:text-base"
-            >
-              Play Again 🔄
-            </button>
+            <Button onClick={handleReset}>Play Again 🔄</Button>
           )}
         </>
       )}
