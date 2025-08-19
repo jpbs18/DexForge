@@ -8,7 +8,7 @@ export default async function Header() {
       <div
         className="absolute inset-0 opacity-10 z-0"
         style={{
-          backgroundImage: "url('/pokeball.png')",
+          backgroundImage: "url('/pokeball.webp')",
           backgroundSize: "80px",
           backgroundRepeat: "repeat",
         }}
@@ -37,7 +37,7 @@ export default async function Header() {
         <div className="flex justify-center items-center h-28">
           <Link href="/" className="relative w-[240px] h-[130px]">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Pokémon Official Logo"
               fill
               sizes="(max-width: 768px) 100vw, 240px"

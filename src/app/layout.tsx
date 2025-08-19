@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   title: "DexForge",
   description: "Build your perfect Pokémon team. Explore. Battle. Learn",
   icons: {
-    icon: "/pokeball.png",
+    icon: "/pokeball.webp",
   },
   openGraph: {
     title: "DexForge",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "DexForge",
     images: [
       {
-        url: "https://yourdomain.com/pokeball.png",
+        url: "https://yourdomain.com/pokeball.webp",
         width: 1200,
         height: 630,
         alt: "DexForge Open Graph Image",
