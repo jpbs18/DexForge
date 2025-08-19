@@ -3,6 +3,11 @@ import Image from "next/image";
 
 export const metadata = {
   title: "Official DexForge Website | DexForge.com",
+  description:
+    "Welcome to DexForge! Discover, build, and battle with your perfect Pokémon team. Explore the Pokédex, play games, and track your favorite Pokémon.",
+  alternates: {
+    canonical: "https://dex-forge.vercel.app/",
+  },
 };
 
 export default async function Home() {

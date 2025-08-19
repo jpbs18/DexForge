@@ -7,6 +7,11 @@ import Warning from "@/components/about/Warning";
 
 export const metadata = {
   title: "About | DexForge.com",
+  description:
+    "Learn about DexForge, its features, the team behind the Pokédex, credits, and social media.",
+  alternates: {
+    canonical: "https://dex-forge.vercel.app/about",
+  },
 };
 
 export default async function About() {
