@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "DexForge",
     description: "Build your perfect Pokémon team. Explore. Battle. Learn",
-    url: "https://yourdomain.com",
+    url: "https://dex-forge.vercel.app",
     siteName: "DexForge",
     images: [
       {
@@ -36,6 +36,23 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
     type: "website",
+  },
+  alternates: {
+    canonical: "https://dex-forge.vercel.app",
+  },
+  keywords: [
+    "Pokémon",
+    "Pokédex",
+    "Pokémon team builder",
+    "Pokémon battle",
+    "DexForge",
+  ],
+  twitter: {
+    card: "summary_large_image",
+    title: "DexForge",
+    description: "Build your perfect Pokémon team. Explore. Battle. Learn",
+    images: ["https://dex-forge.vercel.app/pokeball.png"],
+    creator: "@jpbs18",
   },
   robots: {
     index: true,
@@ -50,7 +67,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body
         className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
       >

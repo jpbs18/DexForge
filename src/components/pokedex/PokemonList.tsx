@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { PokemonCard } from "./PokemonCard";
 import { Pokemon } from "@/models/pokemon";
 import { LIMIT_PER_PAGE } from "@/lib/env.client";
-import Button from "../UI/Button";
+import Button from "@/components/UI/Button";
+import { PokemonCard } from "@/components/pokedex/PokemonCard";
 
 export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
   const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
@@ -18,7 +18,7 @@ export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
 
   if (!pokemons || pokemons.length === 0) {
     return (
-      <p className="text-gray-700 dark:text-gray-200 mb-6 mx-4 text-center sm:text-xl md:text-2xl">
+      <p className="text-gray-200 mb-6 mx-4 text-center sm:text-xl md:text-2xl">
         No Pokémon matched your search
       </p>
     );

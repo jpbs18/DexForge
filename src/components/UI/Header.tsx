@@ -18,6 +18,7 @@ export default async function Header() {
           src="/blastoise.webp"
           alt="Blastoise Peek"
           fill
+          unoptimized
           sizes="200px"
           style={{ objectFit: "contain" }}
           priority
@@ -28,6 +29,7 @@ export default async function Header() {
           src="/charizard.webp"
           alt="Charizard Peek"
           fill
+          unoptimized
           sizes="220px"
           style={{ objectFit: "contain" }}
           priority
@@ -40,6 +42,7 @@ export default async function Header() {
               src="/logo.webp"
               alt="Pokémon Official Logo"
               fill
+              unoptimized
               sizes="(max-width: 768px) 100vw, 240px"
               style={{
                 objectFit: "contain",

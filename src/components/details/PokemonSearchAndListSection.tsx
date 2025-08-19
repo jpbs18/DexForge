@@ -1,7 +1,7 @@
 "use client";
 
-import PokemonList from "@/components/pokemon/PokemonList";
-import PokemonSearchAndFilter from "@/components/pokemon/PokemonSearchAndFilter";
+import PokemonList from "@/components/pokedex/PokemonList";
+import PokemonSearchAndFilter from "@/components/pokedex/PokemonSearchAndFilter";
 import { Pokemon } from "@/models/pokemon";
 import { useState } from "react";
 
