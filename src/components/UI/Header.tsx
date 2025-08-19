@@ -39,7 +39,7 @@ export default async function Header() {
         <div className="flex justify-center items-center h-28">
           <Link href="/" className="relative w-[240px] h-[130px]">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Pokémon Official Logo"
               fill
               unoptimized
