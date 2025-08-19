@@ -8,7 +8,7 @@ export default async function Header() {
       <div
         className="absolute inset-0 opacity-10 z-0"
         style={{
-          backgroundImage: "url('/pokeball.png')",
+          backgroundImage: "url('/pokeball.webp')",
           backgroundSize: "80px",
           backgroundRepeat: "repeat",
         }}
