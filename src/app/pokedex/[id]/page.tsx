@@ -15,10 +15,16 @@ export async function generateMetadata({
 }) {
   const { id } = await params;
   const pokemon = await getPokemonDetails(id);
+  const title = pokemon ? `${pokemon.name} | DexForge.com` : "Pokémon | DexForge.com";
+  const canonical = pokemon
+    ? `https://dex-forge.vercel.app/pokemon/${id}`
+    : "https://dex-forge.vercel.app/";
+
   return {
-    title: pokemon
-      ? `${pokemon.name} | DexForge.com`
-      : "Pokémon | DexForge.com",
+    title,
+    alternates: {
+      canonical,
+    },
   };
 }
 

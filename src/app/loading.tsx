@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <div className="flex flex-col justify-center items-center flex-grow">
       <Image
-        src="/pokeball.png"
+        src="/pokeball.webp"
         alt="Loading Pokéball"
         width={64}
         height={64}

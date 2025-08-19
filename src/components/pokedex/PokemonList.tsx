@@ -28,7 +28,14 @@ export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
     <div>
       <ul className="grid grid-cols-1 justify-items-center sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6">
         {pokemons.slice(0, visibleCount).map((pokemon: Pokemon) => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          <li
+            key={pokemon.id}
+            className={`rounded-xl shadow-md overflow-hidden flex flex-col items-center mx-auto duration-300 
+            hover:rotate-[3deg] hover:shadow-2xl animate-fade-slide-up hover:shadow-black
+          bg-gray-800 border-2 border-indigo-100 cursor-pointer max-w-[250px] w-full`}
+          >
+            <PokemonCard pokemon={pokemon} />
+          </li>
         ))}
       </ul>
       {visibleCount < pokemons.length && (
