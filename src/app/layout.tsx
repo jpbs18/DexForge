@@ -49,13 +49,6 @@ export const metadata: Metadata = {
     "Pokémon battle",
     "DexForge",
   ],
-  twitter: {
-    card: "summary_large_image",
-    title: "DexForge",
-    description: "Build your perfect Pokémon team. Explore. Battle. Learn",
-    images: ["https://dex-forge.vercel.app/pokeball.png"],
-    creator: "@jpbs18",
-  },
   robots: {
     index: true,
     follow: true,
