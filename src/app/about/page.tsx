@@ -5,6 +5,8 @@ import Features from "@/components/about/Features";
 import SocialMedia from "@/components/about/SocialMedia";
 import Warning from "@/components/about/Warning";
 
+export const revalidate = 86400; 
+
 export const metadata = {
   title: "About | DexForge.com",
   description:

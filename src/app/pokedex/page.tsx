@@ -3,6 +3,7 @@ import PokemonSearchAndListSection from "../../components/details/PokemonSearchA
 import PokedexInfo from "@/components/pokedex/PokedexInfo";
 
 export const revalidate = 86400;
+
 export const metadata = {
   title: "Pokédex | DexForge.com",
   description:

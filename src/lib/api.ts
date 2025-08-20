@@ -1,7 +1,6 @@
 import { Pokemon, PokemonDetails } from "@/models/pokemon";
 import { BASE_URL, PREFETCH_LIMIT_PER_PAGE, TOTAL_AMOUNT } from "./env.server";
 import { Article } from "@/models/news";
-import { NEWS_API_KEY } from "./env.client";
 
 export async function fetchAllPokemons(): Promise<Pokemon[]> {
   const totalPages = Math.ceil(TOTAL_AMOUNT / PREFETCH_LIMIT_PER_PAGE);
@@ -48,15 +47,12 @@ export async function getPokemonDetails(
 }
 
 export async function fetchPokemonNews(
-  pageNumber: number
+  page: number
 ): Promise<Article[] | null> {
   try {
-    const res = await fetch(
-      `https://newsapi.org/v2/everything?qInTitle=pokemon&language=en&pageSize=12&page=${pageNumber}&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`,
-      {
-        next: { revalidate: 86400 },
-      }
-    );
+    const res = await fetch(`${BASE_URL}/news?pageSize=9&page=${page}`, {
+      next: { revalidate: 28800 },
+    });
 
     if (!res.ok) {
       throw new Error("Failed to fetch news");

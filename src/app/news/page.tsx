@@ -1,65 +1,23 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { Article } from "@/models/news";
 import { fetchPokemonNews } from "@/lib/api";
-import NewsCard from "@/components/news/NewsCard";
-import Button from "@/components/UI/Button";
+import NewsClient from "@/components/news/NewsClient";
 
-export default function NewsPage() {
-  const [newsItems, setNewsItems] = useState<Article[]>([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+export const revalidate = 28800;
 
-  useEffect(() => {
-    loadNews(page);
-  }, [page]);
+export const metadata = {
+  title: "News | DexForge.com",
+  description: "Get access to the latest news about the Pokémon world!",
+  alternates: {
+    canonical: "https://dex-forge.vercel.app/news",
+  },
+};
 
-  const loadNews = async (pageNumber: number) => {
-    setLoading(true);
-    const newArticles = await fetchPokemonNews(pageNumber);
-
-    if (!newArticles || newArticles.length === 0) {
-      setHasMore(false);
-    } else {
-      setNewsItems((prev) => [...prev, ...newArticles]);
-    }
-
-    setLoading(false);
-  };
-
-  const handleLoadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    loadNews(nextPage);
-  };
+export default async function NewsPage() {
+  const firstPage = 1;
+  const initialNews = await fetchPokemonNews(firstPage);
 
   return (
     <div className="container mx-auto p-4 animate-fade-slide-up">
-      <h1 className="text-3xl md:text-4xl text-center font-bold my-8 text-yellow-300 ">Latest Pokémon News</h1>
-      <ul className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {newsItems.map((item) => (
-          <li
-            key={item.url}
-            className="animate-fade-slide-up"
-          >
-            <NewsCard article={item} />
-          </li>
-        ))}
-      </ul>
-      {hasMore && (
-        <div className="flex justify-center mt-6">
-          <Button onClick={handleLoadMore} disabled={loading}>
-            {loading ? "Loading..." : "Load More"}
-          </Button>
-        </div>
-      )}
-      {!hasMore && (
-        <p className="text-center text-gray-500 mt-6">
-          No more news available.
-        </p>
-      )}
+      <NewsClient initialNews={initialNews || []} />
     </div>
   );
 }
