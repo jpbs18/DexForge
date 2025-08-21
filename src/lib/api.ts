@@ -58,18 +58,8 @@ export async function fetchPokemonNews(
       throw new Error("Failed to fetch news");
     }
 
-    const data = await res.json();
-
-    return data.articles
-      .filter((article: Article) => article.urlToImage)
-      .map((article: Article) => ({
-        title: article.title,
-        description: article.description,
-        url: article.url,
-        urlToImage: article.urlToImage,
-        publishedAt: article.publishedAt,
-        source: article.source,
-      }));
+    const { articles } = await res.json();
+    return articles;
   } catch (error) {
     console.error(`❌ Failed to fetch news:`, error);
     return null;
