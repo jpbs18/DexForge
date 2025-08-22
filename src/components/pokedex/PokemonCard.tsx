@@ -20,7 +20,7 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
       >
         <div className="w-40 h-40 relative mb-4 z-10">
           <Image
-            src={pokemon.front_default}
+            src={pokemon.image}
             alt={pokemon.name}
             fill
             unoptimized

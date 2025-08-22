@@ -2,7 +2,7 @@ export interface Pokemon {
   id: number;
   name: string;
   types: string[];
-  front_default: string;
+  image: string;
 }
 
 export interface PokemonDetails {
@@ -10,13 +10,13 @@ export interface PokemonDetails {
   name: string;
   types: string[];
   abilities: string[];
-  front_default: string;
+  image: string;
   weight: number;
   height: number;
   stats: Stats[];
   genders: string[];
   weaknesses: string[];
-  evolutions: { species: string }[];
+  evolutions: string[];
   category: string;
 }
 
@@ -30,9 +30,5 @@ export interface PokeData {
 
 export interface Stats {
   base_stat: number;
-  effort?: number;
-  stat: {
-    name: string;
-    url?: string;
-  };
+  name: string;
 }

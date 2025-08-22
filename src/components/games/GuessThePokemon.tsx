@@ -79,9 +79,9 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
             transition={{ duration: 0.3 }}
             className="relative w-full h-full"
           >
-            {currentPokemon?.front_default && (
+            {currentPokemon?.image && (
               <Image
-                src={currentPokemon.front_default}
+                src={currentPokemon.image}
                 alt={currentPokemon.name}
                 fill
                 style={{ objectFit: "contain" }}

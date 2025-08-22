@@ -7,9 +7,7 @@ export async function fetchAllPokemons(): Promise<Pokemon[]> {
 
   const fetchPromises = Array.from({ length: totalPages }, (_, i) =>
     fetch(
-      `${BASE_URL}/pokemons?page=${i + 1}&limit=${PREFETCH_LIMIT_PER_PAGE}`,
-      { next: { revalidate: 86400 } }
-    )
+      `${BASE_URL}/pokemons?page=${i + 1}&limit=${PREFETCH_LIMIT_PER_PAGE}`)
       .then(async (res) => {
         if (!res.ok) {
           throw new Error(`Failed to fetch page ${i + 1}: ${res.statusText}`);
@@ -31,9 +29,7 @@ export async function getPokemonDetails(
   id: string
 ): Promise<PokemonDetails | null> {
   try {
-    const res = await fetch(`${BASE_URL}/pokemons/${id}`, {
-      next: { revalidate: 86400 },
-    });
+    const res = await fetch(`${BASE_URL}/pokemons/${id}`);
 
     if (!res.ok) {
       throw new Error(`Failed to fetch Pokémon ${id}: ${res.statusText}`);

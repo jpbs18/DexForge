@@ -1,10 +1,6 @@
 import Image from "next/image";
 
-export default async function PokemonEvolutions({
-  evolutions,
-}: {
-  evolutions: { species: string }[];
-}) {
+export default async function PokemonEvolutions({ evolutions }: { evolutions: string[] }) {
   return (
     <section className="mt-6 sm:mt-8 md:mt-6">
       <h2 className="text-2xl font-semibold mb-4 capitalize text-center md:text-left mx-auto md:mx-0">
@@ -16,7 +12,7 @@ export default async function PokemonEvolutions({
             <div className="flex flex-col items-center">
               <div className="w-24 h-24 bg-gray-200 rounded-lg flex items-center justify-center shadow-lg overflow-hidden">
                 <Image
-                  src={evo.species}
+                  src={evo}
                   alt={`Evolution ${index + 1}`}
                   width={120}
                   height={120}

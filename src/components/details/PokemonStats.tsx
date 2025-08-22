@@ -8,8 +8,8 @@ export default async function PokemonStats({ stats }: { stats: Stats[] }) {
         Stats
       </h2>
       <div className="space-y-3">
-        {stats.map((s: Stats) => (
-          <PokemonStatsBars key={s.stat.name} stat={s} />
+        {stats.map((stat: Stats) => (
+          <PokemonStatsBars key={stat.name} stat={stat} />
         ))}
       </div>
     </section>

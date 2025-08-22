@@ -10,7 +10,7 @@ export default async function PokemonMainInfo({
     <div className="flex flex-col md:flex-row items-center gap-4 mt-6">
       <div className="relative w-48 h-48 flex-shrink-0">
         <Image
-          src={details.front_default}
+          src={details.image}
           alt={details.name}
           sizes="(max-width: 768px) 192px, 192px"
           fill
