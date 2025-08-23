@@ -3,7 +3,7 @@ import Image from "next/image";
 export default async function PokemonEvolutions({ evolutions }: { evolutions: string[] }) {
   return (
     <section className="mt-6 sm:mt-8 md:mt-6">
-      <h2 className="text-2xl font-semibold mb-4 capitalize text-center md:text-left mx-auto md:mx-0">
+      <h2 className="text-2xl font-semibold mb-4 text-center md:text-left mx-auto md:mx-0">
         Evolutions
       </h2>
       <div className="flex flex-col md:flex-row items-center justify-center">

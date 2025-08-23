@@ -130,7 +130,7 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
                       ? "bg-green-500"
                       : "bg-red-500"
                     : "bg-indigo-600 hover:bg-indigo-700"
-                } capitalize text-sm sm:text-base`}
+                } text-sm sm:text-base`}
             >
               {option}
             </button>

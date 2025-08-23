@@ -9,8 +9,8 @@ function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
 
   return (
     <Link href={`/pokedex/${pokemon.id}`} className="w-full max-w-[250px]">
-      <div className="w-full bg-gray-800 text-white px-4 py-2 font-bold uppercase tracking-wide flex justify-between items-center">
-        <span className="capitalize text-sm sm:text-base">{pokemon.name}</span>
+      <div className="w-full bg-gray-800 text-white px-4 py-2 font-bold tracking-wide flex justify-between items-center">
+        <span className="text-sm sm:text-base">{pokemon.name}</span>
         <span className="text-xs sm:text-sm">
           #{pokemon.id.toString().padStart(3, "0")}
         </span>
