@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Pokemon } from "@/models/pokemon";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "../UI/Button";
+import { usePokemon } from "@/context/PokemonContext";
 
 export function shuffleArray<T>(array: T[]): T[] {
   const arr = [...array];
@@ -15,7 +16,7 @@ export function shuffleArray<T>(array: T[]): T[] {
   return arr;
 }
 
-export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
+export default function GuessThePokemon() {
   const ROUNDS = 15;
   const [rounds, setRounds] = useState<Pokemon[]>([]);
   const [currentRound, setCurrentRound] = useState(0);
@@ -24,6 +25,7 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
   const [selected, setSelected] = useState<string>("");
   const [showAnswer, setShowAnswer] = useState(false);
   const isLastRound = currentRound === ROUNDS - 1;
+  const { pokemons } = usePokemon();
 
   useEffect(() => {
     const shuffled = shuffleArray(pokemons).slice(0, ROUNDS);

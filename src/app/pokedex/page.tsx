@@ -1,6 +1,6 @@
-import { fetchAllPokemons } from "@/lib/api";
-import PokemonSearchAndListSection from "../../components/details/PokemonSearchAndListSection";
+import PokemonSearchAndFilter from "@/components/pokedex/PokemonSearchAndFilter";
 import PokedexInfo from "@/components/pokedex/PokedexInfo";
+import PokemonList from "@/components/pokedex/PokemonList";
 
 export const revalidate = 86400;
 
@@ -14,12 +14,11 @@ export const metadata = {
 };
 
 export default async function PokedexPage() {
-  const pokemons = await fetchAllPokemons();
-
   return (
-    <main className="max-w-8xl mx-auto p-4">
+    <main className="max-w-8xl mx-auto p-4 animate-fade-slide-up">
       <PokedexInfo />
-      <PokemonSearchAndListSection pokemons={pokemons} />
+      <PokemonSearchAndFilter />
+      <PokemonList />
     </main>
   );
 }
