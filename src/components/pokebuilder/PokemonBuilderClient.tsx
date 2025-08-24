@@ -9,6 +9,7 @@ import PokemonTeamMember from "./PokemonTeamMember";
 import PokemonSearchAndFilter from "../pokedex/PokemonSearchAndFilter";
 import PokemonMiniCard from "./PokemonMiniCard";
 import Button from "../UI/Button";
+import { typeChart } from "@/utils/stats";
 
 export default function PokemonBuilderClient() {
   const { filteredPokemons } = usePokemon();
