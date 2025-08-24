@@ -11,6 +11,14 @@ import TeamBuilderInfo from "@/components/pokebuilder/BuilderInfo";
 import PokemonMiniCard from "@/components/pokebuilder/PokemonMiniCard";
 import PokemonTeamMember from "@/components/pokebuilder/PokemonTeamMember";
 
+export const metadata = {
+  title: "PokéBuilder | DexForge.com",
+  description: "Assemble your team and check its strengths and weaknesses!",
+  alternates: {
+    canonical: "https://dex-forge.vercel.app/pokebuilder",
+  },
+};
+
 export default function TeamBuilder() {
   const { filteredPokemons } = usePokemon();
   const [team, setTeam] = useState<Pokemon[]>([]);
