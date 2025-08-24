@@ -3,6 +3,11 @@ import Image from "next/image";
 
 export const metadata = {
   title: "Official DexForge Website | DexForge.com",
+  description:
+    "Welcome to DexForge! Discover, build, and battle with your perfect Pokémon team. Explore the Pokédex, play games, and track your favorite Pokémon.",
+  alternates: {
+    canonical: "https://dex-forge.vercel.app/",
+  },
 };
 
 export default async function Home() {
@@ -10,10 +15,22 @@ export default async function Home() {
     <main className="flex flex-col items-center justify-center flex-grow animate-fade-slide-up">
       <div className="max-w-7xl flex flex-col lg:flex-row items-center gap-8 px-6 py-12 relative">
         <div className="absolute top-10 left-10">
-          <Image src="/pokeball.webp" alt="Pokéball" width={40} height={40} unoptimized/>
+          <Image
+            src="/pokeball.webp"
+            alt="Pokéball"
+            width={40}
+            height={40}
+            unoptimized
+          />
         </div>
         <div className="absolute bottom-16 right-12">
-          <Image src="/pokeball.webp" alt="Pokéball" width={50} height={50} unoptimized/>
+          <Image
+            src="/pokeball.webp"
+            alt="Pokéball"
+            width={50}
+            height={50}
+            unoptimized
+          />
         </div>
         <div className="relative w-[240px] h-[280px] md:w-[340px] md:h-[340px] lg:w-[480px] lg:h-[400px]">
           <Image

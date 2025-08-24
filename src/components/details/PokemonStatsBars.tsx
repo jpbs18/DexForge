@@ -15,7 +15,7 @@ export default function PokemonStatBars({ stat }: { stat: Stats }) {
   return (
     <>
       <div className="flex justify-between mb-1 capitalize text-sm">
-        <span>{stat.stat.name.replace("-", " ")}</span>
+        <span>{stat.name.replace("-", " ")}</span>
         <span>{stat.base_stat}</span>
       </div>
       <div

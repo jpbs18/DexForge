@@ -1,10 +1,10 @@
-import { getPokemonDetails } from "@/lib/api";
 import PokemonStats from "@/components/details/PokemonStats";
 import PokemonEvolutions from "@/components/details/PokemonEvolutions";
 import PokemonTypes from "@/components/details/PokemonTypes";
 import PokemonWeaknesses from "@/components/details/PokemonWeaknesses";
 import PokemonMainInfo from "@/components/details/PokemonMainInfo";
 import NavigationArrows from "@/components/details/NavigationArrows";
+import { getPokemonDetails } from "@/lib/api/pokemon";
 
 export const revalidate = 86400;
 
@@ -15,10 +15,25 @@ export async function generateMetadata({
 }) {
   const { id } = await params;
   const pokemon = await getPokemonDetails(id);
+
+  const title = pokemon
+    ? `${pokemon.name} | DexForge.com`
+    : "Pokémon | DexForge.com";
+
+  const canonical = pokemon
+    ? `https://dex-forge.vercel.app/pokemon/${id}`
+    : "https://dex-forge.vercel.app/";
+
+  const description = pokemon
+    ? `Discover ${pokemon.name}, its stats, types, evolutions, and weaknesses on DexForge.com.`
+    : "Explore Pokémon details, stats, types, evolutions, and weaknesses on DexForge.com.";
+
   return {
-    title: pokemon
-      ? `${pokemon.name} | DexForge.com`
-      : "Pokémon | DexForge.com",
+    title,
+    description,
+    alternates: {
+      canonical,
+    },
   };
 }
 

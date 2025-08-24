@@ -1,5 +1,6 @@
 "use client";
 
+import { usePokemon } from "@/context/PokemonContext";
 import { pokemonTypes } from "@/utils/stats";
 import { useState } from "react";
 
@@ -8,25 +9,32 @@ enum Field {
   type,
 }
 
-export default function PokemonSearchAndFilter({
-  onSearch,
-}: {
-  onSearch: (term: string, type: string) => void;
-}) {
+export default function PokemonSearchAndFilter() {
   const [name, setName] = useState("");
   const [type, setType] = useState("");
+  const { pokemons, setFilteredPokemons } = usePokemon();
 
   const handleChange =
     (field: Field) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const value = e.target.value;
+      const newName = field === Field.name ? value : name;
+      const newType = field === Field.type ? value : type;
+
       if (field === Field.name) setName(value);
       else setType(value);
 
-      onSearch(
-        field === Field.name ? value : name,
-        field === Field.type ? value : type
-      );
+      if (!newType && !newName) {
+        setFilteredPokemons(pokemons);
+      } else {
+        setFilteredPokemons(
+          pokemons.filter(
+            (p) =>
+              p.name.toLowerCase().includes(newName.toLowerCase()) &&
+              (!newType || p.types.includes(newType.toLowerCase()))
+          )
+        );
+      }
     };
 
   return (

@@ -2,21 +2,25 @@
 
 import { useState } from "react";
 import { Pokemon } from "@/models/pokemon";
-import { LIMIT_PER_PAGE } from "@/lib/env.client";
+import { LIMIT_PER_PAGE } from "@/lib/env/env.client";
 import Button from "@/components/UI/Button";
-import { PokemonCard } from "@/components/pokedex/PokemonCard";
+import PokemonCard from "@/components/pokedex/PokemonCard";
+import { usePokemon } from "@/context/PokemonContext";
 
-export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
+export default function PokemonList() {
   const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
   const [loading, setLoading] = useState(false);
+  const { filteredPokemons } = usePokemon();
 
   const handleLoadMore = () => {
     setLoading(true);
-    setVisibleCount((prev) => Math.min(prev + LIMIT_PER_PAGE, pokemons.length));
+    setVisibleCount((prev) =>
+      Math.min(prev + LIMIT_PER_PAGE, filteredPokemons.length)
+    );
     setLoading(false);
   };
 
-  if (!pokemons || pokemons.length === 0) {
+  if (!filteredPokemons || filteredPokemons.length === 0) {
     return (
       <p className="text-gray-200 mb-6 mx-4 text-center sm:text-xl md:text-2xl">
         No Pokémon matched your search
@@ -27,11 +31,18 @@ export default function PokemonList({ pokemons }: { pokemons: Pokemon[] }) {
   return (
     <div>
       <ul className="grid grid-cols-1 justify-items-center sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4 xl:gap-6">
-        {pokemons.slice(0, visibleCount).map((pokemon: Pokemon) => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        {filteredPokemons.slice(0, visibleCount).map((pokemon: Pokemon) => (
+          <li
+            key={pokemon.id}
+            className="rounded-xl shadow-md overflow-hidden flex flex-col items-center mx-auto duration-300 
+            hover:rotate-[3deg] hover:shadow-2xl animate-fade-slide-up hover:shadow-black
+          bg-gray-800 border-2 border-indigo-100 cursor-pointer max-w-[250px] w-full"
+          >
+            <PokemonCard pokemon={pokemon} />
+          </li>
         ))}
       </ul>
-      {visibleCount < pokemons.length && (
+      {visibleCount < filteredPokemons.length && (
         <Button
           onClick={handleLoadMore}
           disabled={loading}

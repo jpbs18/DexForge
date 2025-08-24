@@ -1,14 +1,11 @@
 import { Pokemon, PokemonDetails } from "@/models/pokemon";
-import { BASE_URL, PREFETCH_LIMIT_PER_PAGE, TOTAL_AMOUNT } from "./env.server";
+import { BASE_URL, PREFETCH_LIMIT_PER_PAGE, TOTAL_AMOUNT } from "../env/env.server";
 
 export async function fetchAllPokemons(): Promise<Pokemon[]> {
   const totalPages = Math.ceil(TOTAL_AMOUNT / PREFETCH_LIMIT_PER_PAGE);
 
   const fetchPromises = Array.from({ length: totalPages }, (_, i) =>
-    fetch(
-      `${BASE_URL}/pokemons?page=${i + 1}&limit=${PREFETCH_LIMIT_PER_PAGE}`,
-      { next: { revalidate: 86400 } }
-    )
+    fetch(`${BASE_URL}/pokemons?page=${i + 1}&limit=${PREFETCH_LIMIT_PER_PAGE}`)
       .then(async (res) => {
         if (!res.ok) {
           throw new Error(`Failed to fetch page ${i + 1}: ${res.statusText}`);
@@ -30,9 +27,7 @@ export async function getPokemonDetails(
   id: string
 ): Promise<PokemonDetails | null> {
   try {
-    const res = await fetch(`${BASE_URL}/pokemons/${id}`, {
-      next: { revalidate: 86400 },
-    });
+    const res = await fetch(`${BASE_URL}/pokemons/${id}`);
 
     if (!res.ok) {
       throw new Error(`Failed to fetch Pokémon ${id}: ${res.statusText}`);

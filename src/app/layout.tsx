@@ -4,6 +4,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/UI/Navbar";
+import { PokemonProvider } from "@/context/PokemonContext";
+import { NewsProvider } from "@/context/NewsContext";
+import { fetchAllPokemons } from "@/lib/api/pokemon";
+import { fetchPokemonNews } from "@/lib/api/news";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,13 +51,6 @@ export const metadata: Metadata = {
     "Pokémon battle",
     "DexForge",
   ],
-  twitter: {
-    card: "summary_large_image",
-    title: "DexForge",
-    description: "Build your perfect Pokémon team. Explore. Battle. Learn",
-    images: ["https://dex-forge.vercel.app/pokeball.png"],
-    creator: "@jpbs18",
-  },
   robots: {
     index: true,
     follow: true,
@@ -61,11 +58,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pokemons = await fetchAllPokemons();
+  const news = await fetchPokemonNews(1);
+
   return (
     <html lang="en" className="dark">
       <head>
@@ -74,10 +74,14 @@ export default function RootLayout({
       <body
         className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
       >
-        <Header />
-        <Navbar />
-        <main className="flex-grow flex flex-col">{children}</main>
-        <Footer />
+        <PokemonProvider initialPokemons={pokemons || []}>
+          <NewsProvider initialNews={news || []}>
+            <Header />
+            <Navbar />
+            <main className="flex-grow flex flex-col">{children}</main>
+            <Footer />
+          </NewsProvider>
+        </PokemonProvider>
       </body>
     </html>
   );

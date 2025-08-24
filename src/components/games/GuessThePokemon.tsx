@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Pokemon } from "@/models/pokemon";
 import { AnimatePresence, motion } from "framer-motion";
+import Button from "../UI/Button";
+import { usePokemon } from "@/context/PokemonContext";
 
 export function shuffleArray<T>(array: T[]): T[] {
   const arr = [...array];
@@ -14,7 +16,7 @@ export function shuffleArray<T>(array: T[]): T[] {
   return arr;
 }
 
-export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
+export default function GuessThePokemon() {
   const ROUNDS = 15;
   const [rounds, setRounds] = useState<Pokemon[]>([]);
   const [currentRound, setCurrentRound] = useState(0);
@@ -23,6 +25,7 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
   const [selected, setSelected] = useState<string>("");
   const [showAnswer, setShowAnswer] = useState(false);
   const isLastRound = currentRound === ROUNDS - 1;
+  const { pokemons } = usePokemon();
 
   useEffect(() => {
     const shuffled = shuffleArray(pokemons).slice(0, ROUNDS);
@@ -78,9 +81,9 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
             transition={{ duration: 0.3 }}
             className="relative w-full h-full"
           >
-            {currentPokemon?.front_default && (
+            {currentPokemon?.image && (
               <Image
-                src={currentPokemon.front_default}
+                src={currentPokemon.image}
                 alt={currentPokemon.name}
                 fill
                 style={{ objectFit: "contain" }}
@@ -129,7 +132,7 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
                       ? "bg-green-500"
                       : "bg-red-500"
                     : "bg-indigo-600 hover:bg-indigo-700"
-                } capitalize text-sm sm:text-base`}
+                } text-sm sm:text-base`}
             >
               {option}
             </button>
@@ -139,19 +142,9 @@ export default function GuessThePokemon({ pokemons }: { pokemons: Pokemon[] }) {
       {showAnswer && (
         <>
           {!isLastRound ? (
-            <button
-              onClick={handleNextRound}
-              className="py-2 sm:py-3 px-5 sm:px-6 bg-yellow-500 rounded font-bold hover:bg-yellow-600 transition text-sm sm:text-base"
-            >
-              Next Pokémon
-            </button>
+            <Button onClick={handleNextRound}>Next Pokémon</Button>
           ) : (
-            <button
-              onClick={handleReset}
-              className="py-2 sm:py-3 px-5 sm:px-6 bg-green-500 rounded font-bold hover:bg-green-600 transition text-sm sm:text-base"
-            >
-              Play Again 🔄
-            </button>
+            <Button onClick={handleReset}>Play Again 🔄</Button>
           )}
         </>
       )}
