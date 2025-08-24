@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Pokemon } from "@/models/pokemon";
-import { LIMIT_PER_PAGE } from "@/lib/env.client";
+import { LIMIT_PER_PAGE } from "@/lib/env/env.client";
 import Button from "@/components/UI/Button";
 import PokemonCard from "@/components/pokedex/PokemonCard";
 import { usePokemon } from "@/context/PokemonContext";

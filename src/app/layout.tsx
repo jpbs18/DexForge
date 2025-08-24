@@ -5,8 +5,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/UI/Navbar";
 import { PokemonProvider } from "@/context/PokemonContext";
-import { fetchAllPokemons, fetchPokemonNews } from "@/lib/api";
 import { NewsProvider } from "@/context/NewsContext";
+import { fetchAllPokemons } from "@/lib/api/pokemon";
+import { fetchPokemonNews } from "@/lib/api/news";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

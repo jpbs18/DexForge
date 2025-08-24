@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { fetchPokemonNews } from "@/lib/api";
 import { Article } from "@/models/news";
 import NewsCard from "@/components/news/NewsCard";
 import Button from "@/components/UI/Button";
 import { useNews } from "@/context/NewsContext";
-
+import { fetchPokemonNews } from "@/lib/api/news";
 
 export default function NewsClient() {
   const { news } = useNews();

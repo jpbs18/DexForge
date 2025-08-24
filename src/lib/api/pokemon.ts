@@ -1,13 +1,11 @@
 import { Pokemon, PokemonDetails } from "@/models/pokemon";
-import { BASE_URL, PREFETCH_LIMIT_PER_PAGE, TOTAL_AMOUNT } from "./env.server";
-import { Article } from "@/models/news";
+import { BASE_URL, PREFETCH_LIMIT_PER_PAGE, TOTAL_AMOUNT } from "../env/env.server";
 
 export async function fetchAllPokemons(): Promise<Pokemon[]> {
   const totalPages = Math.ceil(TOTAL_AMOUNT / PREFETCH_LIMIT_PER_PAGE);
 
   const fetchPromises = Array.from({ length: totalPages }, (_, i) =>
-    fetch(
-      `${BASE_URL}/pokemons?page=${i + 1}&limit=${PREFETCH_LIMIT_PER_PAGE}`)
+    fetch(`${BASE_URL}/pokemons?page=${i + 1}&limit=${PREFETCH_LIMIT_PER_PAGE}`)
       .then(async (res) => {
         if (!res.ok) {
           throw new Error(`Failed to fetch page ${i + 1}: ${res.statusText}`);
@@ -38,26 +36,6 @@ export async function getPokemonDetails(
     return (await res.json()) as PokemonDetails;
   } catch (error) {
     console.error(`❌ Error fetching Pokémon details for id ${id}:`, error);
-    return null;
-  }
-}
-
-export async function fetchPokemonNews(
-  page: number
-): Promise<Article[] | null> {
-  try {
-    const res = await fetch(`${BASE_URL}/news?pageSize=9&page=${page}`, {
-      next: { revalidate: 28800 },
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to fetch news");
-    }
-
-    const { articles } = await res.json();
-    return articles;
-  } catch (error) {
-    console.error(`❌ Failed to fetch news:`, error);
     return null;
   }
 }
