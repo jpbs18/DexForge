@@ -9,6 +9,7 @@ import Button from "@/components/UI/Button";
 import PokemonSearchAndFilter from "@/components/pokedex/PokemonSearchAndFilter";
 import { LIMIT_PER_PAGE } from "@/lib/env/env.client";
 import TeamBuilderInfo from "@/components/pokebuilder/BuilderInfo";
+import PokemonMiniCard from "@/components/pokebuilder/PokemonMiniCard";
 
 export default function TeamBuilder() {
   const { filteredPokemons } = usePokemon();
@@ -70,9 +71,9 @@ export default function TeamBuilder() {
       <section>
         <TeamBuilderInfo />
         <h2 className="text-xl font-semibold mb-4">Your Team</h2>
-        <div className="flex flex-wrap justify-center gap-2">
+        <ul className="flex flex-wrap justify-center gap-2">
           {team.map((p) => (
-            <div
+            <li
               key={p.id}
               className="flex-shrink-0 border rounded-xl p-2 flex flex-col items-center relative bg-gray-200 w-[120px] animate-fade-slide-up"
             >
@@ -87,14 +88,16 @@ export default function TeamBuilder() {
                 alt={p.name}
                 width={96}
                 height={96}
+                unoptimized
+                loading="lazy"
                 className="mb-2 object-contain"
               />
               <span className="capitalize text-gray-600 text-sm text-center">
                 {p.name}
               </span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
       <section>
         <h2 className="text-xl font-semibold mb-4">
@@ -128,28 +131,13 @@ export default function TeamBuilder() {
         </div>
       </section>
       <PokemonSearchAndFilter />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
+      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
         {filteredPokemons.slice(0, visibleCount).map((p) => (
-          <div
-            key={p.id}
-            className={`rounded-xl p-2 flex flex-col items-center cursor-pointer hover:shadow-lg ${
-              typeColors[p.types[0]]
-            }`}
-            onClick={() => addPokemon(p)}
-          >
-            <Image
-              src={p.image}
-              alt={p.name}
-              width={96}
-              height={96}
-              className="object-contain mb-2"
-            />
-            <span className="capitalize text-white text-sm text-center">
-              {p.name}
-            </span>
-          </div>
+          <li key={p.id}>
+            <PokemonMiniCard pokemon={p} addPokemon={() => addPokemon(p)} />
+          </li>
         ))}
-      </div>
+      </ul>
       {visibleCount < filteredPokemons.length && (
         <Button
           onClick={handleLoadMore}
