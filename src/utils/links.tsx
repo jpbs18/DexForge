@@ -5,7 +5,7 @@ import { MdOutlinePeople } from "react-icons/md";
 export const navLinks = [
   { label: "Home", path: "/", icon: FaHome },
   { label: "Pokédex", path: "/pokedex", icon: GiNotebook },
-  { label: "PokéBuilder", path: "/poke-builder", icon: GiPokecog },
+  { label: "PokéBuilder", path: "/pokebuilder", icon: GiPokecog },
   { label: "Games", path: "/games", icon: FaGamepad },
   { label: "News", path: "/news", icon: GiNewspaper },
   { label: "About", path: "/about", icon: MdOutlinePeople },
