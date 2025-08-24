@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useCallback, useMemo, useState } from "react";
 import { usePokemon } from "@/context/PokemonContext";
-import { typeChart, typeColors } from "@/utils/stats";
+import { typeChart } from "@/utils/stats";
 import { Pokemon } from "@/models/pokemon";
 import Button from "@/components/UI/Button";
 import PokemonSearchAndFilter from "@/components/pokedex/PokemonSearchAndFilter";
 import { LIMIT_PER_PAGE } from "@/lib/env/env.client";
 import TeamBuilderInfo from "@/components/pokebuilder/BuilderInfo";
 import PokemonMiniCard from "@/components/pokebuilder/PokemonMiniCard";
+import PokemonTeamMember from "@/components/pokebuilder/PokemonTeamMember";
 
 export default function TeamBuilder() {
   const { filteredPokemons } = usePokemon();
@@ -17,14 +17,17 @@ export default function TeamBuilder() {
   const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
   const [loading, setLoading] = useState(false);
 
-  const addPokemon = (pokemon: Pokemon) => {
-    if (team.length >= 6) return;
-    if (!team.find((p) => p.id === pokemon.id)) setTeam([...team, pokemon]);
-  };
+  const addPokemon = useCallback(
+    (pokemon: Pokemon) => {
+      if (team.length >= 6) return;
+      if (!team.find((p) => p.id === pokemon.id)) setTeam([...team, pokemon]);
+    },
+    [team]
+  );
 
-  const removePokemon = (id: number) => {
-    setTeam(team.filter((p) => p.id !== id));
-  };
+  const removePokemon = useCallback((id: number) => {
+    setTeam((prev) => prev.filter((p) => p.id !== id));
+  }, []);
 
   const handleLoadMore = () => {
     setLoading(true);
@@ -34,7 +37,7 @@ export default function TeamBuilder() {
     setLoading(false);
   };
 
-  const calculateTeamWeaknesses = () => {
+  const { weakCount, resistCount, immuneCount } = useMemo(() => {
     const allWeak: string[] = [];
     const allResist: string[] = [];
     const allImmune: string[] = [];
@@ -62,9 +65,7 @@ export default function TeamBuilder() {
     );
 
     return { weakCount, resistCount, immuneCount };
-  };
-
-  const { weakCount, resistCount, immuneCount } = calculateTeamWeaknesses();
+  }, [team]);
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col gap-6 animate-fade-slide-up">
@@ -77,24 +78,10 @@ export default function TeamBuilder() {
               key={p.id}
               className="flex-shrink-0 border rounded-xl p-2 flex flex-col items-center relative bg-gray-200 w-[120px] animate-fade-slide-up"
             >
-              <button
-                className="absolute top-0 right-0 text-red-500 font-bold"
-                onClick={() => removePokemon(p.id)}
-              >
-                ×
-              </button>
-              <Image
-                src={p.image}
-                alt={p.name}
-                width={96}
-                height={96}
-                unoptimized
-                loading="lazy"
-                className="mb-2 object-contain"
+              <PokemonTeamMember
+                pokemon={p}
+                removePokemon={() => removePokemon(p.id)}
               />
-              <span className="capitalize text-gray-600 text-sm text-center">
-                {p.name}
-              </span>
             </li>
           ))}
         </ul>
