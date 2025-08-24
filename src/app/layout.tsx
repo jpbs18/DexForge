@@ -74,14 +74,14 @@ export default async function RootLayout({
       <body
         className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
       >
+        <Header />
+        <Navbar />
         <PokemonProvider initialPokemons={pokemons || []}>
           <NewsProvider initialNews={news || []}>
-            <Header />
-            <Navbar />
             <main className="flex-grow flex flex-col">{children}</main>
-            <Footer />
           </NewsProvider>
         </PokemonProvider>
+        <Footer />
       </body>
     </html>
   );

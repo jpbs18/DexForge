@@ -1,6 +1,4 @@
-import PokemonSearchAndFilter from "@/components/pokedex/PokemonSearchAndFilter";
-import PokedexInfo from "@/components/pokedex/PokedexInfo";
-import PokemonList from "@/components/pokedex/PokemonList";
+import PokedexClient from "@/components/pokedex/PokedexClient";
 
 export const revalidate = 86400;
 
@@ -14,11 +12,5 @@ export const metadata = {
 };
 
 export default async function PokedexPage() {
-  return (
-    <main className="max-w-8xl mx-auto p-4 animate-fade-slide-up">
-      <PokedexInfo />
-      <PokemonSearchAndFilter />
-      <PokemonList />
-    </main>
-  );
+ return <PokedexClient />;
 }

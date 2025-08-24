@@ -3,7 +3,7 @@
 import { usePokemon } from "@/context/PokemonContext";
 import { LIMIT_PER_PAGE } from "@/lib/env/env.client";
 import { Pokemon } from "@/models/pokemon";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import TeamBuilderInfo from "./BuilderInfo";
 import PokemonTeamMember from "./PokemonTeamMember";
 import PokemonSearchAndFilter from "../pokedex/PokemonSearchAndFilter";
@@ -12,10 +12,14 @@ import Button from "../UI/Button";
 import { typeChart } from "@/utils/stats";
 
 export default function PokemonBuilderClient() {
-  const { filteredPokemons } = usePokemon();
+  const { filteredPokemons, setFilteredPokemons, pokemons} = usePokemon();
   const [team, setTeam] = useState<Pokemon[]>([]);
   const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setFilteredPokemons(pokemons);
+  }, [pokemons, setFilteredPokemons]);
 
   const addPokemon = useCallback(
     (pokemon: Pokemon) => {

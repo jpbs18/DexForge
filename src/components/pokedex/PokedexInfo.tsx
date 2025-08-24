@@ -1,4 +1,4 @@
-export default async function PokedexInfo() {
+export default function PokedexInfo() {
   return (
     <section className="max-w-3xl mx-auto rounded-2xl p-4 mb-8 shadow-lg text-center flex flex-col gap-2 bg-gray-900">
       <p className="text-lg md:text-xl text-gray-200 leading-relaxed">
