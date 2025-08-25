@@ -33,13 +33,13 @@ export default function PokemonBuilderClient() {
     setTeam((prev) => prev.filter((p) => p.id !== id));
   }, []);
 
-  const handleLoadMore = () => {
+  const handleLoadMore = useCallback(() => {
     setLoading(true);
     setVisibleCount((prev) =>
       Math.min(prev + LIMIT_PER_PAGE, filteredPokemons.length)
     );
     setLoading(false);
-  };
+  }, [filteredPokemons]);
 
   const { weakCount, resistCount, immuneCount } = useMemo(() => {
     const allWeak: string[] = [];

@@ -1,32 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { Article } from "@/models/news";
 import NewsCard from "@/components/news/NewsCard";
 import Button from "@/components/UI/Button";
 import { useNews } from "@/context/NewsContext";
-import { fetchPokemonNews } from "@/lib/api/news";
+import { useNewsPagination } from "@/hooks/useNewsPagination";
 
 export default function NewsClient() {
   const { news } = useNews();
-  const [newsItems, setNewsItems] = useState<Article[]>(news);
-  const [page, setPage] = useState(2);
-  const [loading, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
-
-  const loadMore = async () => {
-    setLoading(true);
-    const newArticles = await fetchPokemonNews(page);
-
-    if (!newArticles || newArticles.length === 0) {
-      setHasMore(false);
-    } else {
-      setNewsItems((prev) => [...prev, ...newArticles]);
-      setPage((prev) => prev + 1);
-    }
-
-    setLoading(false);
-  };
+  const { newsItems, loadMore, loading, hasMore } = useNewsPagination(news);
 
   return (
     <div className="container mx-auto p-4 animate-fade-slide-up">

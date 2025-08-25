@@ -7,7 +7,6 @@ interface PokemonContextType {
   pokemons: Pokemon[];
   filteredPokemons: Pokemon[];
   setFilteredPokemons: (pokemons: Pokemon[]) => void;
-  resetPokemons: () => void;
 }
 
 const PokemonContext = createContext<PokemonContextType | undefined>(undefined);
@@ -22,7 +21,6 @@ export function PokemonProvider({
   const [pokemons] = useState<Pokemon[]>(initialPokemons);
   const [filteredPokemons, setFilteredPokemons] =
     useState<Pokemon[]>(initialPokemons);
-  const resetPokemons = () => setFilteredPokemons(pokemons);
 
   return (
     <PokemonContext.Provider
@@ -30,7 +28,6 @@ export function PokemonProvider({
         pokemons,
         filteredPokemons,
         setFilteredPokemons,
-        resetPokemons,
       }}
     >
       {children}
