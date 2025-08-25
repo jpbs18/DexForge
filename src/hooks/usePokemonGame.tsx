@@ -13,9 +13,12 @@ export function usePokemonGame(pokemons: Pokemon[], roundsCount: number = 15) {
   const pokemonNames = pokemons.map((p) => p.name);
 
   const options = currentPokemon
-    ? shuffleArray(
-        pokemonNames.filter((name) => name !== currentPokemon.name)
-      ).slice(0, 3)
+    ? shuffleArray([
+        currentPokemon.name,
+        ...shuffleArray(
+          pokemonNames.filter((name) => name !== currentPokemon.name)
+        ).slice(0, 3),
+      ])
     : [];
 
   useEffect(() => {
