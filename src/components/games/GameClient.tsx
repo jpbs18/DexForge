@@ -18,7 +18,7 @@ export default function GameClient() {
     handleSelect,
     handleNextRound,
     handleReset,
-  } = usePokemonGame(pokemons, 15);
+  } = usePokemonGame(pokemons);
 
   const feedbackMessage = () => {
     if (!showAnswer || !selected) return null;

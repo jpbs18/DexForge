@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { Article } from "@/models/news";
 import { fetchPokemonNews } from "@/lib/api/news";
 
@@ -8,7 +8,7 @@ export function useNewsPagination(initialNews: Article[], initialPage = 2) {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
-  const loadMore = useCallback(async () => {
+  const loadMore = async () => {
     if (loading || !hasMore) return;
 
     setLoading(true);
@@ -24,7 +24,7 @@ export function useNewsPagination(initialNews: Article[], initialPage = 2) {
     } finally {
       setLoading(false);
     }
-  }, [page, loading, hasMore]);
+  };
 
   return { newsItems, loadMore, loading, hasMore };
 }
