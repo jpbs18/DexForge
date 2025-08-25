@@ -7,19 +7,21 @@ export function usePokemonGame(pokemons: Pokemon[], roundsCount: number = 15) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selected, setSelected] = useState<string>("");
   const [showAnswer, setShowAnswer] = useState(false);
+  const [options, setOptions] = useState<string[]>([]);
 
   const isLastRound = currentIndex === roundsCount - 1;
   const currentPokemon = rounds[currentIndex];
   const pokemonNames = pokemons.map((p) => p.name);
 
-  const options = currentPokemon
-    ? shuffleArray([
-        currentPokemon.name,
-        ...shuffleArray(
-          pokemonNames.filter((name) => name !== currentPokemon.name)
-        ).slice(0, 3),
-      ])
-    : [];
+  useEffect(() => {
+    if (!currentPokemon) return;
+
+    const wrongOptions = shuffleArray(
+      pokemonNames.filter((name) => name !== currentPokemon.name)
+    ).slice(0, 3);
+
+    setOptions(shuffleArray([currentPokemon.name, ...wrongOptions]));
+  }, [currentIndex, rounds]);
 
   useEffect(() => {
     const shuffled = shuffleArray(pokemons).slice(0, roundsCount);
