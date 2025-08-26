@@ -30,8 +30,8 @@ export default function GameClient() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 mt-4 animate-fade-slide-up">
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-8 text-yellow-300 drop-shadow-lg">
+    <div className="flex flex-col items-center justify-center sm:p-6 md:p-8 mt-6 animate-fade-slide-up">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-4 text-yellow-300 drop-shadow-lg">
         Who&apos;s This Pokémon?
       </h1>
       <div className="relative w-40 h-40 sm:w-50 sm:h-50 md:w-60 md:h-60 lg:w-60 lg:h-60 mb-2">
