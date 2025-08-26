@@ -3,7 +3,7 @@
 import { usePokemon } from "@/context/PokemonContext";
 import { LIMIT_PER_PAGE } from "@/lib/env/env.client";
 import { Pokemon } from "@/models/pokemon";
-import { useCallback, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import TeamBuilderInfo from "./BuilderInfo";
 import PokemonTeamMember from "./PokemonTeamMember";
 import PokemonSearchAndFilter from "../pokedex/PokemonSearchAndFilter";
@@ -12,22 +12,31 @@ import Button from "../UI/Button";
 import { typeChart } from "@/utils/stats";
 
 export default function PokemonBuilderClient() {
-  const { filteredPokemons } = usePokemon();
+  const { filteredPokemons, setFilteredPokemons, pokemons } = usePokemon();
   const [team, setTeam] = useState<Pokemon[]>([]);
   const [visibleCount, setVisibleCount] = useState(LIMIT_PER_PAGE);
   const [loading, setLoading] = useState(false);
 
-  const addPokemon = useCallback(
-    (pokemon: Pokemon) => {
-      if (team.length >= 6) return;
-      if (!team.find((p) => p.id === pokemon.id)) setTeam([...team, pokemon]);
-    },
-    [team]
-  );
+  useEffect(() => {
+    setFilteredPokemons(pokemons);
+  }, [pokemons, setFilteredPokemons]);
 
-  const removePokemon = useCallback((id: number) => {
+  const addPokemon = (pokemon: Pokemon) => {
+    if (team.length >= 6) return;
+    if (!team.find((p) => p.id === pokemon.id)) setTeam([...team, pokemon]);
+  };
+
+  const addHandlers = useMemo(() => {
+    const map: Record<number, () => void> = {};
+    filteredPokemons.forEach((p) => {
+      map[p.id] = () => addPokemon(p);
+    });
+    return map;
+  }, [filteredPokemons, team]);
+
+  const removePokemon = (id: number) => {
     setTeam((prev) => prev.filter((p) => p.id !== id));
-  }, []);
+  };
 
   const handleLoadMore = () => {
     setLoading(true);
@@ -121,7 +130,7 @@ export default function PokemonBuilderClient() {
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-center">
         {filteredPokemons.slice(0, visibleCount).map((p) => (
           <li key={p.id}>
-            <PokemonMiniCard pokemon={p} addPokemon={() => addPokemon(p)} />
+            <PokemonMiniCard pokemon={p} addPokemon={addHandlers[p.id]} />
           </li>
         ))}
       </ul>

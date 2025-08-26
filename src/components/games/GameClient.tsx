@@ -1,77 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Pokemon } from "@/models/pokemon";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "../UI/Button";
+import { usePokemonGame } from "@/hooks/usePokemonGame";
 import { usePokemon } from "@/context/PokemonContext";
 
-export function shuffleArray<T>(array: T[]): T[] {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-}
-
 export default function GameClient() {
-  const ROUNDS = 15;
-  const [rounds, setRounds] = useState<Pokemon[]>([]);
-  const [currentRound, setCurrentRound] = useState(0);
-  const [currentPokemon, setCurrentPokemon] = useState<Pokemon | null>(null);
-  const [options, setOptions] = useState<string[]>([]);
-  const [selected, setSelected] = useState<string>("");
-  const [showAnswer, setShowAnswer] = useState(false);
-  const isLastRound = currentRound === ROUNDS - 1;
   const { pokemons } = usePokemon();
 
-  useEffect(() => {
-    const shuffled = shuffleArray(pokemons).slice(0, ROUNDS);
-    setRounds(shuffled);
-  }, [pokemons]);
+  const {
+    currentPokemon,
+    options,
+    selected,
+    showAnswer,
+    isLastRound,
+    handleSelect,
+    handleNextRound,
+    handleReset,
+  } = usePokemonGame(pokemons);
 
-  useEffect(() => {
-    if (rounds.length === 0) return;
-    const pokemon = rounds[currentRound];
-    setCurrentPokemon(pokemon);
+  const feedbackMessage = () => {
+    if (!showAnswer || !selected) return null;
+    if (isLastRound) return "🎉 Game Over!";
 
-    const wrongOptions = shuffleArray(
-      pokemons.filter((p) => p.name !== pokemon.name).map((p) => p.name)
-    ).slice(0, 3);
-
-    setOptions(shuffleArray([pokemon.name, ...wrongOptions]));
-    setSelected("");
-    setShowAnswer(false);
-  }, [rounds, currentRound, pokemons]);
-
-  const handleSelect = (option: string) => {
-    setSelected(option);
-    setShowAnswer(true);
-  };
-
-  const handleReset = () => {
-    setShowAnswer(false);
-    setTimeout(() => {
-      const shuffled = shuffleArray(pokemons).slice(0, ROUNDS);
-      setRounds(shuffled);
-      setCurrentRound(0);
-    }, 200);
-  };
-
-  const handleNextRound = () => {
-    setTimeout(() => {
-      setCurrentRound((prev) => prev + 1);
-    }, 200);
+    return selected === currentPokemon.name
+      ? "Correct! 🎉"
+      : `Wrong! It's ${currentPokemon.name}`;
   };
 
   return (
     <div className="flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 mt-4 animate-fade-slide-up">
-      <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-8 text-yellow-300 drop-shadow-lg">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-8 text-yellow-300 drop-shadow-lg">
         Who&apos;s This Pokémon?
       </h1>
-      <div className="relative w-40 h-40 sm:w-50 sm:h-50 md:w-60 md:h-60 lg:w-60 lg:h-60 mb-4">
+      <div className="relative w-40 h-40 sm:w-50 sm:h-50 md:w-60 md:h-60 lg:w-60 lg:h-60 mb-2">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentPokemon?.name}
@@ -102,37 +65,33 @@ export default function GameClient() {
             className={
               isLastRound
                 ? "text-yellow-500"
-                : selected === currentPokemon?.name
+                : selected === currentPokemon.name
                 ? "text-green-500 animate-bounce"
                 : "text-red-500 animate-shake"
             }
           >
-            {isLastRound
-              ? "🎉 Game Over!"
-              : selected === currentPokemon?.name
-              ? "Correct! 🎉"
-              : `Wrong! It's ${currentPokemon?.name}`}
+            {feedbackMessage()}
           </span>
         )}
       </div>
       <div className="w-6/12 sm:w-full max-w-md mb-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         {options.map((option) => {
           const isSelected = selected === option;
-          const isCorrect = option === currentPokemon?.name;
+          const isCorrect = option === currentPokemon.name;
 
           return (
             <button
               key={option}
               onClick={() => handleSelect(option)}
               disabled={showAnswer}
-              className={`py-2 sm:py-3 px-3 sm:px-4 rounded font-semibold text-white transition 
+              className={`py-2 sm:py-3 px-3 sm:px-4 rounded font-semibold text-white transition text-sm sm:text-base
                 ${
                   showAnswer && isSelected
                     ? isCorrect
                       ? "bg-green-500"
                       : "bg-red-500"
                     : "bg-indigo-600 hover:bg-indigo-700"
-                } text-sm sm:text-base`}
+                }`}
             >
               {option}
             </button>
@@ -140,13 +99,9 @@ export default function GameClient() {
         })}
       </div>
       {showAnswer && (
-        <>
-          {!isLastRound ? (
-            <Button onClick={handleNextRound}>Next Pokémon</Button>
-          ) : (
-            <Button onClick={handleReset}>Play Again 🔄</Button>
-          )}
-        </>
+        <Button onClick={!isLastRound ? handleNextRound : handleReset}>
+          {!isLastRound ? "Next Pokémon" : "Play Again 🔄"}
+        </Button>
       )}
     </div>
   );

@@ -23,9 +23,7 @@ export const metadata: Metadata = {
   title: "DexForge",
   description: "Build your perfect Pokémon team. Explore. Battle. Learn",
   icons: {
-    icon: "/pokeball.png",
-    shortcut: "/pokeball.png",
-    apple: "/pokeball.png",
+    icon: "/pokeball.webp",
   },
   openGraph: {
     title: "DexForge",
@@ -34,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "DexForge",
     images: [
       {
-        url: "https://dex-forge.vercel.app/pokeball.png",
+        url: "https://yourdomain.com/pokeball.webp",
         width: 1200,
         height: 630,
         alt: "DexForge Open Graph Image",
@@ -76,14 +74,14 @@ export default async function RootLayout({
       <body
         className={`flex flex-col min-h-screen ${geistSans.variable} ${geistMono.variable}`}
       >
+        <Header />
+        <Navbar />
         <PokemonProvider initialPokemons={pokemons || []}>
           <NewsProvider initialNews={news || []}>
-            <Header />
-            <Navbar />
             <main className="flex-grow flex flex-col">{children}</main>
-            <Footer />
           </NewsProvider>
         </PokemonProvider>
+        <Footer />
       </body>
     </html>
   );
